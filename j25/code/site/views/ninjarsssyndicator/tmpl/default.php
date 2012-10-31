@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -14,11 +14,19 @@
 	define("TIME_ZONE","");
 	include_once(JPATH_COMPONENT.DS.'views'.DS.'ninjarsssyndicator'.DS.'tmpl'.DS.'feedcreator.class.php');
 	
+	//check if com_finder is installed (J2.5 and above)
+	$finder_exists = 0;
+	$myfile = JPATH_BASE.DS.'components'.DS.'com_finder'.DS.'controller.php';
+	if (file_exists($myfile))
+		$finder_exists = 1;
 	// Register dependent classes.
-	JLoader::register('FinderIndexerHelper', dirname(__FILE__) . '/helper.php');
-	JLoader::register('FinderIndexerTaxonomy', dirname(__FILE__) . '/taxonomy.php');
-	JLoader::register('FinderHelperRoute', JPATH_SITE . '/components/com_finder/helpers/route.php');
-	JLoader::register('FinderHelperLanguage', JPATH_ADMINISTRATOR . '/components/com_finder/helpers/language.php');
+	if ($finder_exists)
+		{
+		JLoader::register('FinderIndexerHelper', dirname(__FILE__) . '/helper.php');
+		JLoader::register('FinderIndexerTaxonomy', dirname(__FILE__) . '/taxonomy.php');
+		JLoader::register('FinderHelperRoute', JPATH_SITE . '/components/com_finder/helpers/route.php');
+		JLoader::register('FinderHelperLanguage', JPATH_ADMINISTRATOR . '/components/com_finder/helpers/language.php');
+		}
 	
 	// Register dependent classes.
 	JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
@@ -33,7 +41,7 @@
 	
 
 	//if type is Summaries then get numwords from db
-	$numWords = $this->numWords > 0  ? $this->numWords: 10000; // numWord == 0 represents ALL
+	$numWords = $this->numWords > 0	? $this->numWords: 10000; // numWord == 0 represents ALL
 
 	/*if type is RSS then use admin defined default
  	if (($this->type=="RSS") || ($this->type=="RSSSUMM"))
@@ -49,21 +57,21 @@
 
 	//Use cache if docache is set to 1
 	if (intval($docache)==1) {
-	    $rss->useCached($this->type,$filename,$this->cache); // use cached version if age<1 hour. May not return!
+		$rss->useCached($this->type,$filename,$this->cache); // use cached version if age<1 hour. May not return!
 	}
-	$rss->title 				= htmlspecialchars($this->title, ENT_QUOTES);
-	$rss->description			= $this->description;
+	$rss->title 			= htmlspecialchars($this->title, ENT_QUOTES);
+	$rss->description		= $this->description;
 	$rss->link 				= JURI::root();
 	
 	$u = JFactory::getURI();
-	$rss->syndicationURL 			= $u->toString();
-	$rss->descriptionHtmlSyndicated 	= true;
+	$rss->syndicationURL 	= $u->toString();
+	$rss->descriptionHtmlSyndicated = true;
 
 	$image 					= new FeedImage();
-	$image->title 				= $mainframe->getCfg('sitename');
-	$image->url 				= $this->imgUrl;
-	$image->link 				= JURI::root();
-	$image->description			= $mainframe->getCfg('sitename');
+	$image->title 			= $mainframe->getCfg('sitename');
+	$image->url 			= $this->imgUrl;
+	$image->link 			= JURI::root();
+	$image->description		= $mainframe->getCfg('sitename');
 	$image->descriptionHtmlSyndicated	= true;
 
 	if ( $this->imgUrl!="") { $rss->image = $image; }
@@ -77,8 +85,8 @@
 	
 	//used to trigger content plugins below
 	JPluginHelper::importPlugin( 'content' );
-  $dispatcher = JDispatcher::getInstance();   
-  
+	$dispatcher = JDispatcher::getInstance();	 
+	
 	// Include menu itemid's in URLs by forming $itemids lookup array
 	//$itemids = makeMenuItemArray('content_blog_section');
 	$itemids = $this->menuitemarray;	
@@ -89,38 +97,36 @@
 
 		// be sure itemid has some content!
 		/*>>> AGE 20071012 */
-		if ($itemid == "")
+		if (($itemid == "")&&($finder_exists))
 		{ 
 			//$itemid = $mainframe->getItemid( $row->id, 0, 0 );					
 			// Get the menu item id.
 			//$query = array('id' => $row->id);
-			$myfile = JPATH_BASE.DS.'components'.DS.'com_finder'.DS.'controller.php';
-			if (file_exists($myfile))			//check if com_finder is installed (J2.5 and above)
-				$itemid = FinderHelperRoute::getItemid($row->id);
+			$itemid = FinderHelperRoute::getItemid($row->id);
 		}
 		/*<<< AGE 20071012 */
 		if ($itemid == "") {$itemid = 99999999;}
 		
 		$item->link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catslug),false,2);
-    $item->guid = $item->link;
-    
-    //Jroute produces htmlspecialchar modified urls. 
-    //We need to decode them because the feedclass also specialchars them, giving us things like &amp;amp;
-    //TODO - test special characters
-    //$itemurl = htmlspecialchars_decode ($itemurl);
-    
-
-    /* >> DAN 2009/12/14 */
-    /* fulltext options:
-     * 0 -> Do nothing
-     * 1 -> Read more link
-     * 2 -> Add to intro text
-     * 3 -> Use only full text
-     */
-    $AddReadMoreLink = false;   
+		$item->guid = $item->link;
 		
-    /*     Testing Case statement below. If it works, remove this code- D
-    $words = $row->itext;
+		//Jroute produces htmlspecialchar modified urls. 
+		//We need to decode them because the feedclass also specialchars them, giving us things like &amp;amp;
+		//TODO - test special characters
+		//$itemurl = htmlspecialchars_decode ($itemurl);
+		
+
+		/* >> DAN 2009/12/14 */
+		/* fulltext options:
+		 * 0 -> Do nothing
+		 * 1 -> Read more link
+		 * 2 -> Add to intro text
+		 * 3 -> Use only full text
+		 */
+		$AddReadMoreLink = false;	 
+		
+		/*		 Testing Case statement below. If it works, remove this code- D
+		$words = $row->itext;
 		if ($this->fulltext == 2) {
 			$words .= $row->mtext;
 		} */
@@ -137,15 +143,15 @@
 			case 3:
 				$words = ($row->fulltext) ? $row->fulltext : $row->introtext;
 				break;
-		}          		
-     
+		}							
+		 
 		// Check if $words is larger then the $numWords
 		// Add some extra words because characters are count as words (20% extra)
 		
 		if (str_word_count(trim($words)) > $numWords) 
-    {			
-		    $AddReadMoreLink = true;   		    
-		    $words = word_limiter($words, $numWords);		   
+		{			
+			$AddReadMoreLink = true;	 				
+			$words = word_limiter($words, $numWords);			 
 		}
 				
 		if($this->fulltext == 0)
@@ -155,25 +161,25 @@
 		
 		if ($this->fulltext == 1 or $AddReadMoreLink) {
 			if (strlen(trim($row->mtext)) > 0 or $AddReadMoreLink)
-			    $words .= "\n<p><a href=\"" . $item->link . "\">" . JText::sprintf('Read more...') . "</a></p>"; 				
+				$words .= "\n<p><a href=\"" . $item->link . "\">" . JText::sprintf('Read more...') . "</a></p>"; 				
 		}
-    		
+				
 		if (!intval($this->renderHTML)) {
-		  //Remove HTML tags if told not to render them
-		  $words = noHTML ($words); 
-		  
-		} else {     		  		  
+			//Remove HTML tags if told not to render them
+			$words = noHTML ($words); 
+			
+		} else {		 						
 			//Remove images if told not to render them	
-      //Images will also get remove with HTML tags above	  	
-		  if (!intval($this->renderImages)) {
-		    $words = delImagesFromHTML($words);
-		  } 
+			//Images will also get remove with HTML tags above			
+			if (!intval($this->renderImages)) {
+				$words = delImagesFromHTML($words);
+			} 
 		}
 
 		/* Convert relative urls to absolute */
 		$words = addAbsoluteURL($words);
 		
-		$item->description 			= $words;
+		$item->description 	= $words;
 		$item->descriptionHtmlSyndicated	= true;		
 
 		//Many, many failed attempts to get the date right.
@@ -197,10 +203,9 @@
 			$item->author 	= $author;
 			$item->authorEmail	= $row->authorEmail;
 		}
-		//If needed, trigger content plugins on the row content.                     		
-	  //TODO - expand this to allow for individual paramters for the plugin instances
-	  $dispatcher->trigger( 'onPrepareNinjaRSSFeedRow', array( &$item ) );  			
-		
+		//If needed, trigger content plugins on the row content.										 		
+		//TODO - expand this to allow for individual paramters for the plugin instances
+		$dispatcher->trigger( 'onPrepareNinjaRSSFeedRow', array( &$item ) );				
 		
 		$rss->addItem($item);		
 	}
@@ -208,8 +213,8 @@
 	//If needed, trigger content plugins on the feed as a whole.
 	//TODO - expand this to allow for individual paramters for the plugin instances
 	$dispatcher->trigger( 'onPrepareNinjaRSSFeed', array( &$rss ) ); 			
-ob_end_clean();
-ob_start();    
+	ob_end_clean();
+	ob_start();		
  	//If we are using the cache and the time out is greater than 0, then generate and use a file.
  	//Otherwise generate the feed on the fly
 	if (intval($docache)==1 && $this->cache > 0) 
@@ -217,10 +222,10 @@ ob_start();
 		$rss->saveFeed($this->type,$filename,true);
 	} else {
 		$rss->outputFeed($this->type);
-	}                    
+	}										
 
 function noHTML($words) {
-    $words = preg_replace("'<script[^>]*>.*?</script>'si","",$words);
+	$words = preg_replace("'<script[^>]*>.*?</script>'si","",$words);
 	$words = preg_replace('/<a\s+.*?href="([^"]+)"[^>]*>([^<]+)<\/a>/is','\2 (\1)', $words);
 	$words = preg_replace('/<!--.+?-->/','',$words);
 	//$words = preg_replace('/{.+?}/','',$words);
@@ -244,9 +249,9 @@ function addAbsoluteURL($html) {
 ** Delete all the images from the url
 */
 function delImagesFromHTML($html, $instances = -1) {
-  $html = preg_replace('/<img\\s.*>/i','', $html, $instances);
+	$html = preg_replace('/<img\\s.*>/i','', $html, $instances);
 
-  return $html;
+	return $html;
 }
 
 /* >> MAD 2007/10/09
@@ -269,17 +274,17 @@ function word_limiter($string, $limit = 100) {
 }
 
 function first_img_src($html) {
-        if (stripos($html, '<img') !== false) {
-            $imgsrc_regex = '#<\s*img [^\>]*src\s*=\s*(["\'])(.*?)\1#im';
-            preg_match($imgsrc_regex, $html, $matches);
-            unset($imgsrc_regex);
-            unset($html);
-            if (is_array($matches) && !empty($matches)) {
-                return $matches[2];
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
+	if (stripos($html, '<img') !== false) {
+			$imgsrc_regex = '#<\s*img [^\>]*src\s*=\s*(["\'])(.*?)\1#im';
+			preg_match($imgsrc_regex, $html, $matches);
+			unset($imgsrc_regex);
+			unset($html);
+			if (is_array($matches) && !empty($matches)) {
+					return $matches[2];
+			} else {
+					return false;
+			}
+	} else {
+			return false;
+	}
+}
