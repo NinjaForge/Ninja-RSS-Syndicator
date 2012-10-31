@@ -94,7 +94,9 @@
 			//$itemid = $mainframe->getItemid( $row->id, 0, 0 );					
 			// Get the menu item id.
 			//$query = array('id' => $row->id);
-			$itemid = FinderHelperRoute::getItemid($row->id);
+			$myfile = JPATH_BASE.DS.'components'.DS.'com_finder'.DS.'controller.php';
+			if (!(file_exists($myfile)))		//check if com_finder is installed (J2.5 and above)
+				$itemid = FinderHelperRoute::getItemid($row->id);
 		}
 		/*<<< AGE 20071012 */
 		if ($itemid == "") {$itemid = 99999999;}
