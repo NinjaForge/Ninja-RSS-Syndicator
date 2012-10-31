@@ -14,11 +14,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 function com_install()
 {
 	
-	$database	= & JFactory::getDBO();
+	$database	= JFactory::getDBO();
 	
 	$database->setQuery("DROP TABLE IF EXISTS `#__ninjarsssyndicator`;");
 	$database->query();
-	
+
+
 	$database->setQuery("CREATE TABLE IF NOT EXISTS `#__ninjarsssyndicator` 
 	(
 		`id` tinyint(4) NOT NULL auto_increment, 
@@ -32,8 +33,9 @@ function com_install()
 		`renderAuthorFormat` varchar(10) default 'NAME', 
 		`renderHTML` tinyint(1) default '1', 
 		`FPItemsOnly` tinyint(1) default '0',
-		`description` text default NULL, PRIMARY KEY  (`id`) 
-	) ENGINE=MyISAM;");
+		`description` text default NULL, 
+		PRIMARY KEY  (`id`) 
+	) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 	$database->query();
 
 	/*$database->setQuery("INSERT IGNORE INTO `#__ninjarsssyndicator` (`id`, `msg`, `defaultType`, `count`, `orderby`, `numWords`, `cache`, `imgUrl`, `renderHTML`, `FPItemsOnly`) VALUES (1,'Get the latest news direct to your desktop','2.0','10','rdate',0,0,'',1, 0);");
@@ -64,8 +66,9 @@ function com_install()
 		`msg_exitems` varchar(250) default NULL, 
 		`msg_includetags` varchar(250) default NULL, 
 		`msg_contentPlugins` tinyint(1) default NULL, 
-		`published` tinyint(1) default NULL, PRIMARY KEY  (`id`) 
-	) ENGINE=MyISAM;");
+		`published` tinyint(1) default NULL, 
+		PRIMARY KEY  (`id`) 
+	) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 	$database->query();
 
 	/*$database->setQuery("SHOW FULL COLUMNS FROM #__ninjarsssyndicator_feeds where field = 'feed_catsInTitle'");	
@@ -125,8 +128,6 @@ function com_install()
 
 ?>
 <img src="<?php echo JURI::root(); ?>administrator/components/com_ninjarsssyndicator/assets/images/ninja-rss.jpg" alt="Ninja RSS Syndicator" title="Ninja RSS Syndicator" /><br />
-Ninja RSS Syndicator has been succesfully installed.
-
-<p>Ninja RSS Syndicator was originally called BCA RSS Syndicator and was developed by <a href="http://www.bodyhealthdebate.co.uk/" target="_blank">Body Health Debate</a> to promote Breast Cancer Awareness in the Joomla community.</p>
+<p>Ninja RSS Syndicator has been succesfully installed.</p>
 
 <?php } 
