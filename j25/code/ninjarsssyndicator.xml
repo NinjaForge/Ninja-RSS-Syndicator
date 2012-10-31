@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>Ninja RSS Syndicator</name>
+	<!-- The following elements are optional and free of formatting constraints -->
+	<name>Ninja RSS Syndicator</name>
+	<creationDate>2008 10 18</creationDate>
+	<author>Daniel Chapman</author>
+	<authorEmail>daniel@ninjaforge.com</authorEmail>
+	<authorUrl>http://ninjaforge.com</authorUrl>
+	<copyright>NinjaForge.com</copyright>
+	<license><![CDATA[ Ninja RSS Syndicator is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">General Public License</a> as published by the Free Software Foundation. ]]></license>
+
+	<!--  The version string is recorded in the components table -->
+	<version>2.0</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>Ninja RSS Syndicator</description>
+	
+	<installfile>install/install.php</installfile>
+    <uninstallfile>install/uninstall.php</uninstallfile>
+	
+	<!-- Site Main File Copy Section -->
+	<!-- Note the folder attribute: This attribute describes the folder
+		to copy FROM in the package to install therefore files copied
+		in this section are copied from /site/ in the package -->
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>ninjarsssyndicator.php</filename>
+		<filename>controller.php</filename>
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>feed</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<!--<folder>language</folder>-->
+	</files>
+	
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu img="../administrator/components/com_ninjarsssyndicator/assets/images/nficon.png" link="option=com_ninjarsssyndicator&amp;view=feeds" alias="Ninja RSS Syndicator">Ninja RSS Syndicator</menu>
+		<submenu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Dashboard" alias="Dashboard" view="info" link="option=com_ninjarsssyndicator&amp;view=info">Dashboard</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Feeds" alias="Feeds" view="feeds" link="option=com_ninjarsssyndicator&amp;view=feeds">Feeds</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Button Maker" alias="Button Maker" view="buttonmaker" link="option=com_ninjarsssyndicator&amp;view=buttonmaker">Button Maker</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Default Settings" alias="Default Settings" view="config" link="option=com_ninjarsssyndicator&amp;view=config">Default Settings</menu>
+		</submenu>
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder
+			to copy FROM in the package to install therefore files copied
+			in this section are copied from /admin/ in the package -->
+		<files folder="admin">
+			<!-- Admin Main File Copy Section -->
+			<filename>index.html</filename>
+			<filename>ninjarsssyndicator.php</filename>
+			<filename>controller.php</filename>
+			<!-- Assest files section -->
+			<folder>assets</folder>
+			<!--<folder>classes</folder>-->
+			<!-- SQL files section -->
+			<folder>install</folder>
+			<!-- tables files section -->
+			<folder>tables</folder>
+			<!-- models files section -->
+			<folder>models</folder>
+			<!-- views files section -->
+			<folder>views</folder>
+			<!-- controllers files section -->
+			<folder>controllers</folder>
+			<!-- helpers files section -->
+			<!--<folder>helpers</folder>-->
+		</files>
+	</administration>
+</extension>
+
