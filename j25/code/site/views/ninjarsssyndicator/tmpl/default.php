@@ -95,7 +95,7 @@
 			// Get the menu item id.
 			//$query = array('id' => $row->id);
 			$myfile = JPATH_BASE.DS.'components'.DS.'com_finder'.DS.'controller.php';
-			if (!(file_exists($myfile)))		//check if com_finder is installed (J2.5 and above)
+			if (file_exists($myfile))			//check if com_finder is installed (J2.5 and above)
 				$itemid = FinderHelperRoute::getItemid($row->id);
 		}
 		/*<<< AGE 20071012 */
