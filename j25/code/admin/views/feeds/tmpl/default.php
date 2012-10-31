@@ -37,7 +37,7 @@ $rootpath = JURI::root();
             <?php
             $k = 0;
             for ($i=0, $n=count( $this->items ); $i < $n; $i++) {
-                $row = &$this->items[$i];
+                $row = $this->items[$i];
 
                 $checked 	= JHTML::_('grid.id',  $i, $row->id );
                 $published 	= JHTML::_('grid.published', $row, $i );

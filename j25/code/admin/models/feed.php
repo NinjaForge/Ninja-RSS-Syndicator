@@ -155,7 +155,7 @@ class NinjaRssSyndicatorModelFeed extends JModel
 	 */
 	function publish($cid = array(), $publish = 1)
 	{
-		$user 	=& JFactory::getUser();
+		$user 	= JFactory::getUser();
 
 		if (count( $cid ))
 		{
@@ -215,7 +215,7 @@ class NinjaRssSyndicatorModelFeed extends JModel
 		{	
 			//echo $this->_cnt;
 			//return $this->_exCategories;
-			$session =& JFactory::getSession();
+			$session = JFactory::getSession();
 			$session->set('_exCategories', $this->_exCategories);
 		}
 		
@@ -369,7 +369,7 @@ class NinjaRssSyndicatorModelFeed extends JModel
 	
 	function getDefaultData()
 	{
-		$config =& $this->getInstance('config','ninjarsssyndicatorModel');
+		$config = $this->getInstance('config','ninjarsssyndicatorModel');
 		return $config->getData();
 	}
 }

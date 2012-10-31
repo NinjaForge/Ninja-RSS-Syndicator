@@ -18,8 +18,8 @@ class NinjaRssSyndicatorViewFeed extends JView
 {
 	function display($tpl = null)
 	{
-		$feed =& $this->get('SData');
-		//$sections =& $this->get('Sections');
+		$feed = $this->get('SData');
+		//$sections = $this->get('Sections');
 		
 		$isNew = ($feed->id<1);
 		$text = $isNew ? 'New feed':'Change feed: '. $feed->feed_name;
@@ -32,7 +32,7 @@ class NinjaRssSyndicatorViewFeed extends JView
 		
 		if ($isNew)  {
 			JToolBarHelper::cancel();
-			$default =& $this->get('DefaultData');			
+			$default = $this->get('DefaultData');			
 		} else {
 			// for existing items the button is renamed `close`
 			JToolBarHelper::cancel( 'cancel', 'close' );
@@ -108,7 +108,7 @@ class NinjaRssSyndicatorViewFeed extends JView
 		
 		
 		//Excluded categories		
-		$db = &JFactory::getDbo();		
+		$db = JFactory::getDbo();		
 		$query = "SELECT * FROM #__categories WHERE published=1 and extension='com_content' ";
 		$db->setQuery($query);
 		$rowlist = $db->loadObjectList();
@@ -124,7 +124,7 @@ class NinjaRssSyndicatorViewFeed extends JView
 		
 		$model = $this->getModel('feed');		
 		$model->getExCategories(1,$menu_array);
-		$session =& JFactory::getSession();
+		$session = JFactory::getSession();
 		$exCatOptions = $session->get('_exCategories');				
 		$lists['excludedcatlist'] = JHTML::_( 'select.genericList', $exCatOptions, 'msg_excatlist' . '[]', 'class="inputbox"  multiple="true"', 'value', 'text', $exCatSelected );
 		
@@ -154,7 +154,7 @@ class NinjaRssSyndicatorViewFeed extends JView
 		$lists['feedButtons'] = JHTML::_( 'select.genericList', $buttons, 'feed_button', 'onchange="loadButton(this)" class="inputbox" ','value', 'text',$isNew ? 'rss20.gif' : $feed->feed_button);
 		
 		//Editor
-		$editor  =& JFactory::getEditor();	
+		$editor  = JFactory::getEditor();	
 		
 		$this->assignRef('id', $feed->id);
 		$this->assignRef('name', $feed->feed_name);

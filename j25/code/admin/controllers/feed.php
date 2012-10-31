@@ -131,10 +131,10 @@ class NinjaRssSyndicatorControllerFeed extends JControllerForm
 	
 	function feeds()
 	{
-		$document = &JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$viewType = $document->getType();
-		$view = &$this->getView('feeds',$viewType,'NinjaRssSyndicatorView');
-		$model = &$this->getModel('feed');
+		$view = $this->getView('feeds',$viewType,'NinjaRssSyndicatorView');
+		$model = $this->getModel('feed');
 		if(!JError::isError($model))
 		{
 			$view->setModel($model,true);

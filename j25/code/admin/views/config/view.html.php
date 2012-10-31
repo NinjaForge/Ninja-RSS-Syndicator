@@ -19,9 +19,9 @@ class NinjaRssSyndicatorViewConfig extends JView
 	function display($tpl = null)
 	{
 		JToolBarHelper::save('config.save');
-		$configs  =& $this->get('Data');
+		$configs  = $this->get('Data');
 		$text = 'Default settings';
-		JToolBarHelper::title(   JText::_( 'Ninja RSS Syndicator').': <small><small>[ ' . $text.' ]</small></small>', 'config.png' );
+		JToolBarHelper::title( JText::_('Ninja RSS Syndicator').': <small><small>[ ' . $text.' ]</small></small>', 'config.png' );
 		
 		$lists = array();
 		

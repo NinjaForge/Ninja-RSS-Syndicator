@@ -18,10 +18,10 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JView
 {
 	function display($tpl = null)
 	{
-		$feed		= & $this->get( 'Data');	
-		//$feed		= & $this->get( 'Items');	
-		$content	= & $this->get( 'Content');
-		$menuItemArray =& $this->get('MenuItemArray');
+		$feed		= $this->get( 'Data');	
+		//$feed		= $this->get( 'Items');	
+		$content	= $this->get( 'Content');
+		$menuItemArray = $this->get('MenuItemArray');
 		$this->assignRef('id', $feed->id);
 		$this->assignRef('title', $feed->feed_name);
 		$this->assignRef('type', $feed->feed_type);
@@ -43,7 +43,7 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JView
 		
     //TODO - add these columns if enough people request them
     //$this->assignRef('ninjaRSSFeedRowPlugins', $feed->msg_ninjaRSSFeedRowPlugins);		
-		//$this->assignRef('ninjaRSSFeedPlugins', $feed->feed_ninjaRSSFeedPlugins);
+	//$this->assignRef('ninjaRSSFeedPlugins', $feed->feed_ninjaRSSFeedPlugins);
 		
 		$this->assignRef('content', $content);
 		$this->assignRef('menuitemarray',$menuItemArray );

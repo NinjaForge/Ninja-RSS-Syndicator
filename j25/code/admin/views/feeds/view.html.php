@@ -29,9 +29,9 @@ class NinjaRssSyndicatorViewFeeds extends JView
 		JToolBarHelper::editList('feed.edit', 'JTOOLBAR_EDIT');
 		JToolBarHelper::addNew('feed.add', 'JTOOLBAR_NEW');
 		
-		//$items		= & $this->get( 'Data');
-		//$total		= & $this->get( 'Total');
-		//$pagination = & $this->get( 'Pagination' );
+		//$items		= $this->get( 'Data');
+		//$total		= $this->get( 'Total');
+		//$pagination 	= $this->get( 'Pagination' );
 		
 		$items 			= $this->get('Items');
 		$pagination 	= $this->get('Pagination');
