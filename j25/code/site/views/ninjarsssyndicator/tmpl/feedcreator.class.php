@@ -1011,8 +1011,9 @@ class RSSCreator091 extends FeedCreator {
 			if ($this->items[$i]->date!="") {
 			
 			  $itemDate = new FeedDate($this->items[$i]->date);
+			  $itemUpdated = new FeedDate($this->items[$i]->updated);
 			
-				$feed.= "            <pubDate>".htmlspecialchars($itemDate->rfc822())."</pubDate>\n";
+				$feed.= "            <pubDate>".htmlspecialchars($itemUpdated->rfc822())."</pubDate>\n";
 			}
 			
 			
@@ -1178,8 +1179,9 @@ class PIECreator01 extends FeedCreator {
 				$this->items[$i]->date = time();
 			}
 			$itemDate = new FeedDate($this->items[$i]->date);
+			$itemUpdated = new FeedDate($this->items[$i]->updated);
 			$feed.= "        <published>".htmlspecialchars($itemDate->iso8601())."</published>\n";
-			$feed.= "        <updated>".htmlspecialchars($itemDate->iso8601())."</updated>\n";
+			$feed.= "        <updated>".htmlspecialchars($itemUpdated->iso8601())."</updated>\n";
 			
 			
 			$tempguid = $this->items[$i]->link;

@@ -127,7 +127,7 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		$where = "";//define variable $where
 		/*building 2 queries, in case Component Joomla Tag not installed - query1 : Joomla Tag NOT installed - query2 : Joomla Tag installed */
 		//Oct 24 2008: include slug and catslug for work with JRoute
-		$query =  'SELECT DISTINCT u.id as userid, IFNULL(c.id,a.catid) as catid, a.sectionid as secid, a.id as id, a.*, a.introtext as itext, a.fulltext as mtext, u.name AS author, u.usertype, u.email as authorEmail, a.created_by_alias as authorAlias, a.created AS dsdate, c.title as catName, CASE WHEN CHAR_LENGTH(a.alias) THEN CONCAT_WS(":", a.id, a.alias) ELSE a.id END as slug, CASE WHEN CHAR_LENGTH(c.alias) THEN CONCAT_WS(":", c.id, c.alias) ELSE c.id END as catslug';
+		$query =  'SELECT DISTINCT u.id as userid, IFNULL(c.id,a.catid) as catid, a.sectionid as secid, a.id as id, a.*, a.introtext as itext, a.fulltext as mtext, u.name AS author, u.usertype, u.email as authorEmail, a.created_by_alias as authorAlias, a.created AS dsdate, a.modified as updated, c.title as catName, CASE WHEN CHAR_LENGTH(a.alias) THEN CONCAT_WS(":", a.id, a.alias) ELSE a.id END as slug, CASE WHEN CHAR_LENGTH(c.alias) THEN CONCAT_WS(":", c.id, c.alias) ELSE c.id END as catslug';
 		
 		/* FROM */
 		$query	.=  "\n FROM #__content AS a"		

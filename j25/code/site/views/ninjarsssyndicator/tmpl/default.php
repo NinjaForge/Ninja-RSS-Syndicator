@@ -192,7 +192,8 @@
 		//$item->date = strftime("%a, %d %b %Y %H:%M:%S",strtotime($row->dsdate))." -0700";
 		//$item->date = date($row->dsdate, 'D, d M Y g:i:s')." GMT\n";
 		
-		$item->date = date("r",strtotime($row->dsdate));				
+		$item->date = date("r",strtotime($row->dsdate));		
+		$item->updated = date("r",strtotime($row->updated));		
 		$item->source 				= JURI::root();		
 		
 		if ($this->renderAuthorFormat){
