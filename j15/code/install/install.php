@@ -120,8 +120,6 @@ function com_install()
 
 ?>
 <img src="<?php echo JURI::root(); ?>administrator/components/com_ninjarsssyndicator/assets/images/ninja-rss.jpg" alt="Ninja RSS Syndicator" title="Ninja RSS Syndicator" /><br />
-Ninja RSS Syndicator has been succesfully installed.
-
-<p>Ninja RSS Syndicator was originally called BCA RSS Syndicator and was developed by <a href="http://www.bodyhealthdebate.co.uk/" target="_blank">Body Health Debate</a> to promote Breast Cancer Awareness in the Joomla community.</p>
+<p>Ninja RSS Syndicator has been succesfully installed.</p>
 
 <?php } 

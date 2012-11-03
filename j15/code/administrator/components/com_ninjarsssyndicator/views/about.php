@@ -33,7 +33,7 @@ class NinjaRssSyndicatorViewAbout
 			
 			<h3>License &amp; Copyright</h3>
 			<p>Ninja RSS Syndicator is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">General Public License</a> as published by the Free Software Foundation.<br />
-			Copyright 2010, <a href="http://ninjaforge.com/" target="_blank">NinjaForge</a> and <a href="http://www.bodyhealthdebate.co.uk" target="_blank">Body Health Debate</a>.</p>
+			Copyright 2012, <a href="http://ninjaforge.com/" target="_blank">NinjaForge</a> and <a href="http://www.bodyhealthdebate.co.uk" target="_blank">Body Health Debate</a>.</p>
 			<h3>If you like Ninja RSS Syndicator, please <a href="http://extensions.joomla.org/extensions/content-sharing/rss-syndicate/6392">vote for it</a> on the Joomla Extensions Directory.</h3>
 		<?php
 	}
