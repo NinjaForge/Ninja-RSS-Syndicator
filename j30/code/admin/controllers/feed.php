@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -30,8 +30,8 @@ class NinjaRssSyndicatorControllerFeed extends JControllerForm
 	{
 		parent::__construct();
 		$this->_link = 'index.php?option=com_ninjarsssyndicator&view=feeds';
-		$this->registerTask( 'add'  , 	'edit' );
-		$this->registerTask( 'apply'  , 	'save' );
+		$this->registerTask( 'add'	, 	'edit' );
+		$this->registerTask( 'apply'	, 	'save' );
 	}
 	
 	public function cancel()
@@ -44,7 +44,7 @@ class NinjaRssSyndicatorControllerFeed extends JControllerForm
 	{
 		
 		JRequest::setVar( 'view', 'feed' );
-		JRequest::setVar( 'layout', 'feed'  );
+		JRequest::setVar( 'layout', 'feed'	);
 		JRequest::setVar('hidemainmenu', 1);
 
 		parent::display();

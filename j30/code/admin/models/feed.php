@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -44,7 +44,7 @@ class NinjaRssSyndicatorModelFeed extends JModelLegacy
 		$this->setState('limitstart', $limitstart);
 		
 		//edit feed
-		$array = JRequest::getVar('cid',  0, '', 'array');
+		$array = JRequest::getVar('cid',	0, '', 'array');
 		$this->setId((int)$array[0]);
 	}
 	
@@ -267,26 +267,26 @@ class NinjaRssSyndicatorModelFeed extends JModelLegacy
 		$a_msg_sectlist = JRequest::getVar('msg_sectlist', array(), 'post', 'array');
 		$a_msg_excatlist = JRequest::getVar('msg_excatlist', array(), 'post', 'array');
 		
-		$msg_sectlist  = implode(',', $a_msg_sectlist);
-		$msg_excatlist  = implode(',', $a_msg_excatlist);
+		$msg_sectlist	= implode(',', $a_msg_sectlist);
+		$msg_excatlist	= implode(',', $a_msg_excatlist);
 
 		$feed_name = addslashes(JRequest::getVar('feed_name', '', 'post', 'string'));
-        //$feed_name = $this->_db->Quote($this->_db->getEscaped($feed_name), false);
+		//$feed_name = $this->_db->Quote($this->_db->getEscaped($feed_name), false);
 
 		$feed_description = addslashes(JRequest::getVar('feed_description', '', 'post', 'string'));
-        //$feed_description = $this->_db->Quote($this->_db->getEscaped($feed_description), false);
+		//$feed_description = $this->_db->Quote($this->_db->getEscaped($feed_description), false);
 
 		$feed_type = addslashes(JRequest::getVar('feed_type', '', 'post', 'string'));
 		$feed_cache = addslashes(JRequest::getVar('feed_cache', '', 'post', 'string'));
 
 		$feed_imgUrl = addslashes(JRequest::getVar('feed_imgUrl', '', 'post', 'string'));
-        //$feed_imgUrl = $this->_db->Quote($this->_db->getEscaped($feed_imgUrl), false);
+		//$feed_imgUrl = $this->_db->Quote($this->_db->getEscaped($feed_imgUrl), false);
 
 		$feed_button = addslashes(JRequest::getVar('feed_button', '', 'post', 'string'));
-        //$feed_button = $this->_db->Quote($this->_db->getEscaped($feed_button), false);
-        
+		//$feed_button = $this->_db->Quote($this->_db->getEscaped($feed_button), false);
+		
 		$feed_renderAuthorFormat = JRequest::getVar('feed_renderAuthorFormat', '', 'post', 'string');
-		$feed_renderHTML   = JRequest::getVar('feed_renderHTML', '0', 'post', 'int');
+		$feed_renderHTML	= JRequest::getVar('feed_renderHTML', '0', 'post', 'int');
 		$feed_renderImages = JRequest::getVar('feed_renderImages', '0', 'post', 'int');
 		$msg_count = JRequest::getVar('msg_count', '', 'post', 'string');
 		$msg_orderby=JRequest::getVar('msg_orderby', '', 'post', 'string');
@@ -305,9 +305,9 @@ class NinjaRssSyndicatorModelFeed extends JModelLegacy
 		$isNew = ($id<1);
 		if($isNew)
 			$query = "INSERT INTO #__ninjarsssyndicator_feeds (`feed_name`,`feed_description`, `feed_type`, `feed_cache` ,`feed_imgUrl`,
-					  `feed_button`, `feed_renderAuthorFormat`,  `feed_renderHTML`, `feed_renderImages` , `msg_count` , `msg_orderby`,
-					  `msg_numWords` , `msg_FPItemsOnly`, `msg_sectlist` , `msg_excatlist` , `msg_includeCats`, `msg_fulltext` , `msg_exitems` , `msg_includetags`  ,
-					  `msg_contentPlugins`, `published`) 
+						`feed_button`, `feed_renderAuthorFormat`,	`feed_renderHTML`, `feed_renderImages` , `msg_count` , `msg_orderby`,
+						`msg_numWords` , `msg_FPItemsOnly`, `msg_sectlist` , `msg_excatlist` , `msg_includeCats`, `msg_fulltext` , `msg_exitems` , `msg_includetags`	,
+						`msg_contentPlugins`, `published`) 
 						VALUES 
 						(
 							'$feed_name',

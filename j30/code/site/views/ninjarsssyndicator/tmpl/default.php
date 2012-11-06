@@ -9,7 +9,6 @@
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
-
 defined('_JEXEC') or die('Restricted access'); 
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 define("TIME_ZONE","");

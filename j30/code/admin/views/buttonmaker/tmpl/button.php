@@ -7,56 +7,56 @@
  */
 
 /*
-* @version      2.0
-* @package      com_ninjarsssydicator
-* @author       NinjaForge
+* @version		2.0
+* @package		com_ninjarsssydicator
+* @author		NinjaForge
 * @author email support@ninjaforge.com
-* @link         http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
-* @copyright    Copyright (C) 2012 NinjaForge - All rights reserved.
+* @link			http://ninjaforge.com
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
 defined('_JEXEC') or die('Restricted access');
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 $lettersPath = dirname(__FILE__).DS."letters.png";
 
-$save_file          = JRequest::getInt('save_img',0);
-$leftTextPosition   = JRequest::getInt('leftTextPosition', 5);
-$rightTextPosition  = JRequest::getInt('rightTextPosition', 29);
-$barPosition        = JRequest::getInt('barPosition', 25);
+$save_file			= JRequest::getInt('save_img',0);
+$leftTextPosition	= JRequest::getInt('leftTextPosition', 5);
+$rightTextPosition	= JRequest::getInt('rightTextPosition', 29);
+$barPosition		= JRequest::getInt('barPosition', 25);
 
-$leftText           = JRequest::getVar('leftText', 'RSS');
-$rightText          = JRequest::getVar('rightText', 'VALID');
-$leftTextColor      = JRequest::getVar('leftTextColor', 'ffffff');
-$rightTextColor     = JRequest::getVar('rightTextColor', 'ffffff');
-$outerBorder        = JRequest::getVar('outerBorder', '666666');
-$innerBorder        = JRequest::getVar('innerBorder', 'ffffff');
-$leftFill           = JRequest::getVar('leftFill', 'ff6600');
-$rightFill          = JRequest::getVar('rightFill', '898E79');
+$leftText			= JRequest::getVar('leftText', 'RSS');
+$rightText			= JRequest::getVar('rightText', 'VALID');
+$leftTextColor		= JRequest::getVar('leftTextColor', 'ffffff');
+$rightTextColor		= JRequest::getVar('rightTextColor', 'ffffff');
+$outerBorder		= JRequest::getVar('outerBorder', '666666');
+$innerBorder		= JRequest::getVar('innerBorder', 'ffffff');
+$leftFill			= JRequest::getVar('leftFill', 'ff6600');
+$rightFill			= JRequest::getVar('rightFill', '898E79');
 
-$leftTextColor  = str_replace('#', '', $leftTextColor);
+$leftTextColor	= str_replace('#', '', $leftTextColor);
 $rightTextColor = str_replace('#', '', $rightTextColor);
-$outerBorder    = str_replace('#', '', $outerBorder);
-$innerBorder    = str_replace('#', '', $innerBorder);
-$leftFill       = str_replace('#', '', $leftFill);
-$rightFill      = str_replace('#', '', $rightFill);
+$outerBorder	= str_replace('#', '', $outerBorder);
+$innerBorder	= str_replace('#', '', $innerBorder);
+$leftFill		= str_replace('#', '', $leftFill);
+$rightFill		= str_replace('#', '', $rightFill);
 
 
 function ImageColorAllocateHex( $image, $hex ) { 
-    for( $i=0; $i<3; $i++ ) {
-        $temp = substr($hex, 2*$i, 2);
-        $rgb[$i] = 16 * hexdec( substr($temp, 0, 1) ) + hexdec(substr($temp, 1, 1));
-    }
-    $rgb = ImageColorAllocate ( $image, $rgb[0], $rgb[1], $rgb[2] );
-    return $rgb;
+	for( $i=0; $i<3; $i++ ) {
+		$temp = substr($hex, 2*$i, 2);
+		$rgb[$i] = 16 * hexdec( substr($temp, 0, 1) ) + hexdec(substr($temp, 1, 1));
+	}
+	$rgb = ImageColorAllocate ( $image, $rgb[0], $rgb[1], $rgb[2] );
+	return $rgb;
 }
 
 function getRGB($hex ) { 
-    for( $i=0; $i<3; $i++ ) {
-        $temp = substr($hex, 2*$i, 2);
-        $rgb[$i] = 16 * hexdec( substr($temp, 0, 1) ) + hexdec(substr($temp, 1, 1));
-    }
-    return $rgb;
+	for( $i=0; $i<3; $i++ ) {
+		$temp = substr($hex, 2*$i, 2);
+		$rgb[$i] = 16 * hexdec( substr($temp, 0, 1) ) + hexdec(substr($temp, 1, 1));
+	}
+	return $rgb;
 }
 
 $im = @imagecreatetruecolor(80, 15) or die ("Cannot Initialize new GD image stream");
@@ -152,9 +152,9 @@ $leftText = stripslashes(strtoupper($leftText));
 $leftPos = $leftTextPosition;
 for($i=0;$i<strlen($leftText);$i++){
 
-    $c = ord($leftText[$i]);
-    imagecopy ($im, $letters, $leftPos, 5, $images[$c]["x"], $images[$c]["y"], $images[$c]["w"], 6);
-    $leftPos+=$images[$c]["w"];
+	$c = ord($leftText[$i]);
+	imagecopy ($im, $letters, $leftPos, 5, $images[$c]["x"], $images[$c]["y"], $images[$c]["w"], 6);
+	$leftPos+=$images[$c]["w"];
 }
 
 $letters = imagecreatefrompng($lettersPath);
@@ -168,36 +168,36 @@ $rightText = stripslashes(strtoupper($rightText));
 $rightPos = $rightTextPosition;
 for($i=0;$i<strlen($rightText);$i++){
 
-    $c = ord($rightText[$i]);
-    imagecopy ($im, $letters, $rightPos, 5, $images[$c]["x"], $images[$c]["y"], $images[$c]["w"], 6);
-    $rightPos+=$images[$c]["w"];
+	$c = ord($rightText[$i]);
+	imagecopy ($im, $letters, $rightPos, 5, $images[$c]["x"], $images[$c]["y"], $images[$c]["w"], 6);
+	$rightPos+=$images[$c]["w"];
 }
 if($save_file)
 {
-    $save_path =JPATH_ROOT .DS. "components".DS."com_ninjarsssyndicator".DS."assets".DS."images".DS."buttons";
+	$save_path =JPATH_ROOT .DS. "components".DS."com_ninjarsssyndicator".DS."assets".DS."images".DS."buttons";
 
-    if(!_isWritable($save_path.'/'))
-    {
-        exit("Cannot access $save_path  directory!");
-    }
-    $img_name = $leftText .'-'. $rightText. '-'. time() . '.png';
-    $img_name = strtolower($img_name);
-    imagepng($im, $save_path .DS. $img_name);
+	if(!_isWritable($save_path.'/'))
+	{
+		exit("Cannot access $save_path	directory!");
+	}
+	$img_name = $leftText .'-'. $rightText. '-'. time() . '.png';
+	$img_name = strtolower($img_name);
+	imagepng($im, $save_path .DS. $img_name);
 
-    if(file_exists($save_path .DS. $img_name))
-    {
-        exit('Image saved! link: <a href="'.JURI::root().'components/com_ninjarsssyndicator/assets/images/buttons/'.$img_name.'" title="'.$img_name.'">'.JURI::root().'components/com_ninjarsssyndicator/assets/images/buttons/'.$img_name.'</a>');
-    }
-    else
-    {
-        exit("Error saving image");
-    }
+	if(file_exists($save_path .DS. $img_name))
+	{
+		exit('Image saved! link: <a href="'.JURI::root().'components/com_ninjarsssyndicator/assets/images/buttons/'.$img_name.'" title="'.$img_name.'">'.JURI::root().'components/com_ninjarsssyndicator/assets/images/buttons/'.$img_name.'</a>');
+	}
+	else
+	{
+		exit("Error saving image");
+	}
 }
 else
 {
-    header ("Content-type: image/png");
-    imagepng ($im);
-    exit();
+	header ("Content-type: image/png");
+	imagepng ($im);
+	exit();
 }
 
 function _isWritable($path) {

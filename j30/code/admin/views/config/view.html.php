@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -19,14 +19,14 @@ class NinjaRssSyndicatorViewConfig extends JViewLegacy
 	function display($tpl = null)
 	{
 		JToolBarHelper::save('config.save');
-		$configs  = $this->get('Data');
+		$configs	= $this->get('Data');
 		$text = 'Default settings';
 		JToolBarHelper::title( JText::_('Ninja RSS Syndicator').': <small><small>[ ' . $text.' ]</small></small>', 'config.png' );
 		
 		$lists = array();
 		
 		$rssType[] = JHTML::_('select.option', '2.0','RSS 2.0');
-		$rssType[] = JHTML::_('select.option', '1.0','RSS 1.0');  		
+		$rssType[] = JHTML::_('select.option', '1.0','RSS 1.0');			
 		$rssType[] = JHTML::_('select.option', '0.91','RSS 0.91');
 		$rssType[] = JHTML::_('select.option', 'ATOM','ATOM');
 		$rssType[] = JHTML::_('select.option', 'OPML','OPML');
@@ -47,7 +47,7 @@ class NinjaRssSyndicatorViewConfig extends JViewLegacy
 		for ($i=25;$i<=250;$i+=25) {
 			$numWords[] = JHTML::_('select.option',$i,$i);
 		}
-		$lists['numWordsList'] = JHTML::_('select.genericList', $numWords, 'numWords', 'class="inputbox"','value', 'text', $configs->numWords,  'numWords');
+		$lists['numWordsList'] = JHTML::_('select.genericList', $numWords, 'numWords', 'class="inputbox"','value', 'text', $configs->numWords,	'numWords');
 		
 		$authorformats[] = JHTML::_( 'select.option', '1','Yes');
 		$authorformats[] = JHTML::_( 'select.option', '0','No');
@@ -58,11 +58,11 @@ class NinjaRssSyndicatorViewConfig extends JViewLegacy
 		$lists['renderHTMLList'] =JHTML::_( 'select.genericList',$renderHTML, 'renderHTML', 'class="inputbox"','value', 'text',$configs->renderHTML );
 		
 		$FPItemsOnly[] = JHTML::_( 'select.option', '0','All items');
-    $FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
+	$FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
 		$FPItemsOnly[] = JHTML::_( 'select.option', '2','Non-frontpage items only');
 		$lists['FPItemsOnlyList'] =JHTML::_( 'select.genericList',$FPItemsOnly, 'FPItemsOnly', 'class="inputbox"','value', 'text',$configs->FPItemsOnly );
 		
-    $this->assignRef('id', $configs->id);
+	$this->assignRef('id', $configs->id);
 		$this->assignRef('msg', $configs->msg);
 		$this->assignRef('defaultType', $lists['rssTypeList']);
 		$this->assignRef('count', $configs->count);

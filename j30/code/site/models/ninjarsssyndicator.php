@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -27,7 +27,7 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 
 		global $option;
 		
-		$id = JRequest::getInt('feed_id',  0, '', 'int');
+		$id = JRequest::getInt('feed_id',	0, '', 'int');
 		$this->setId((int)$id);
 	}
 	
@@ -64,8 +64,8 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 	{
 		
 		if (null === ($feed = $this->getData())) {
-		    JError::raiseWarning( 'SOME_ERROR_CODE', JText::_( 'Error Loading Modules' ) . $db->getErrorMsg());
-		    return false;
+			JError::raiseWarning( 'SOME_ERROR_CODE', JText::_( 'Error Loading Modules' ) . $db->getErrorMsg());
+			return false;
 		}
 		
 		$seclist = $feed->msg_sectlist; 
@@ -74,8 +74,8 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		$excatlist = $feed->msg_excatlist;
 		$exitems = str_replace(" ", "", $feed->msg_exitems);
 		
-		//$includetags =  "'" . str_replace(",", "','", str_replace(" ", "", $feed->msg_includetags)) . "'";
-		$includetags =  str_replace(",", "','", str_replace(" ", "", $feed->msg_includetags)); //sp
+		//$includetags =	"'" . str_replace(",", "','", str_replace(" ", "", $feed->msg_includetags)) . "'";
+		$includetags =	str_replace(",", "','", str_replace(" ", "", $feed->msg_includetags)); //sp
 		
 		/*
 		$includetags = str_replace(" ", "", $feed->msg_includetags);
@@ -94,9 +94,9 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		}
 			
 		
-        $date = JFactory::getDate();           
+		$date = JFactory::getDate();			
 		//$now = date( "Y-m-d H:i:s",time()+$mainframe->getCfg('offset')*60*60 );
-        $now = $date->toSql();         
+		$now = $date->toSql();		 
 			
 		switch (strtolower( $feed->msg_orderby )) {
 			case 'date':
@@ -120,37 +120,37 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 			default:
 				$orderby = "a.created";
 				break;
-		}  
+		}	
 		
 		/* SELECT construction */
 		$queryUncat = "";//Oct 25 2008: include uncategories
 		$where = "";//define variable $where
 		/*building 2 queries, in case Component Joomla Tag not installed - query1 : Joomla Tag NOT installed - query2 : Joomla Tag installed */
 		//Oct 24 2008: include slug and catslug for work with JRoute
-		$query =  'SELECT DISTINCT u.id as userid, IFNULL(c.id,a.catid) as catid, a.id as id, a.*, a.introtext as itext, a.fulltext as mtext, u.name AS author, u.email as authorEmail, a.created_by_alias as authorAlias, a.created AS dsdate, a.modified as updated, c.title as catName, CASE WHEN CHAR_LENGTH(a.alias) THEN CONCAT_WS(":", a.id, a.alias) ELSE a.id END as slug, CASE WHEN CHAR_LENGTH(c.alias) THEN CONCAT_WS(":", c.id, c.alias) ELSE c.id END as catslug';
+		$query =	'SELECT DISTINCT u.id as userid, IFNULL(c.id,a.catid) as catid, a.id as id, a.*, a.introtext as itext, a.fulltext as mtext, u.name AS author, u.email as authorEmail, a.created_by_alias as authorAlias, a.created AS dsdate, a.modified as updated, c.title as catName, CASE WHEN CHAR_LENGTH(a.alias) THEN CONCAT_WS(":", a.id, a.alias) ELSE a.id END as slug, CASE WHEN CHAR_LENGTH(c.alias) THEN CONCAT_WS(":", c.id, c.alias) ELSE c.id END as catslug';
 		
 		/* FROM */
-		$query	.=  "\n FROM #__content AS a"		
+		$query	.=	"\n FROM #__content AS a"		
 				. 	"\n LEFT JOIN #__users AS u ON u.id = a.created_by"
-                .  	"\n LEFT JOIN `#__categories` AS c on c.id = a.catid ";
-                //.  	"\n LEFT JOIN `#__sections` AS s on s.id = c.section ";
+				.		"\n LEFT JOIN `#__categories` AS c on c.id = a.catid ";
+				//.		"\n LEFT JOIN `#__sections` AS s on s.id = c.section ";
 		
 		if ($useTags) {
 			$query	.= "\nLEFT JOIN `#__tag_term_content` AS tc on tc.cid = a.id " /* Joomla Tags Addition */
-					.  "\nLEFT JOIN `#__tag_term` AS t on t.id = tc.tid "; /* Joomla Tags Addition */
+					.	"\nLEFT JOIN `#__tag_term` AS t on t.id = tc.tid "; /* Joomla Tags Addition */
 		}
 		
 		
-		/* WHERE construction  */
+		/* WHERE construction	*/
 		$where	.= "\n WHERE a.state='1'";
 		/* JOIN construction */
 		if (intval($FPItemsOnly)==1) {
 			// frontpage Items only
-			$where  .= "\n AND a.id IN (SELECT content_id FROM #__content_frontpage)";
+			$where	.= "\n AND a.id IN (SELECT content_id FROM #__content_frontpage)";
 		} elseif (intval($FPItemsOnly)==2) {
-            // all articles except frontpage ones 
-            $where  .= "\n AND a.id NOT IN (SELECT content_id FROM #__content_frontpage)";
-        }
+			// all articles except frontpage ones 
+			$where	.= "\n AND a.id NOT IN (SELECT content_id FROM #__content_frontpage)";
+		}
 		if ($exitems != "") {
 			$where	.= "\n AND a.id NOT IN (" . $exitems . ")";
 		}
@@ -158,7 +158,7 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		if ($seclist!=="") {
 			if($seclist == "0")// Xipat - VH: Query uncategorised
 			{
-			   	$where	.= "\n AND a.catid = 0";
+					$where	.= "\n AND a.catid = 0";
 				$queryUncat= " OR a.catid = 0 ";
 			}
 			else {
@@ -178,28 +178,28 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 			}
 		}
 		
-	    $nullDate    = $db->getNullDate();
+		$nullDate	= $db->getNullDate();
 		$where	.= "\n AND a.access > 0"	// item only public access check
-			.  "\n AND (c.access <= 0 $queryUncat) "	// category only public access check
-			//.  "\n AND (s.access <= 0 $queryUncat)"	// section only public access check
-			.  "\n" . 'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).')'
-			.  "\n" . 'AND ( a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')'
+			.	"\n AND (c.access <= 0 $queryUncat) "	// category only public access check
+			//.	"\n AND (s.access <= 0 $queryUncat)"	// section only public access check
+			.	"\n" . 'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).')'
+			.	"\n" . 'AND ( a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')'
 			;
 
-        $query .= $where;
-        
-		/* JRO Apr 16 2020:  Add filter for Jooml Tags Tags  */
-	    if ($useTags) {
-			$query	.= "\n AND t.name  IN ('" . $includetags . "')"; //sp
-		}
-		/*  End filter for Joomla Tags Tags */
-
-
-		/* ORDER BY, LIMIT ...  construction */
-		$query	.= "\nORDER BY $orderby".  ($count ? (" LIMIT " . $count) : "");
+		$query .= $where;
 		
-       
-        //we first try with Joomla Tag
+		/* JRO Apr 16 2020:	Add filter for Jooml Tags Tags	*/
+		if ($useTags) {
+			$query	.= "\n AND t.name	IN ('" . $includetags . "')"; //sp
+		}
+		/*	End filter for Joomla Tags Tags */
+
+
+		/* ORDER BY, LIMIT ...	construction */
+		$query	.= "\nORDER BY $orderby".	($count ? (" LIMIT " . $count) : "");
+		
+		
+		//we first try with Joomla Tag
 		if (empty( $this->_content )) {	
 			$db->setQuery( $query );
 			

@@ -1,106 +1,112 @@
 <?php 
 /*
-* @version    2.0
-* @package    com_ninjarsssydicator
-* @author     NinjaForge
+* @version		2.0
+* @package		com_ninjarsssydicator
+* @author		NinjaForge
 * @author email support@ninjaforge.com
-* @link     http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
-* @copyright  Copyright (C) 2012 NinjaForge - All rights reserved.
+* @link			http://ninjaforge.com
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
 defined('_JEXEC') or die('Restricted access');
 ?>
 <script src="../media/system/js/mootools-core.js" type="text/javascript"></script>
 <script src="../media/system/js/core.js" type="text/javascript"></script>
-  
+	
 <form method="post" action="index.php" name="adminForm" id="adminForm" class="adminForm">
-  <table align="left">
-    <tr>
-      <td ><strong>Preview image:</strong></td>
-   
-      <td id="gen"><img src="<?php echo JURI::root() ?>administrator/index.php?option=com_ninjarsssyndicator&view=buttonmaker&layout=button&outerBorder=#666666&innerBorder=#ffffff&barPosition=25&leftFill=#ff6600&leftText=RSS&leftTextColor=#ffffff&leftTextPosition=5&rightFill=#898E79&rightText=Valid&rightTextColor=#ffffff&rightTextPosition=29" alt="" id="generated" height="15" width="80"></td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Borders</strong></td>
-    </tr>
-    <tr>
-      <td><label for="outerBorder">Outer border</label></td>
-      <td><input name="outerBorder" id="outerBorder" value="#666666" size="20" type="text">
-        <a href="javascript:TCP.popup(document.forms['adminForm'].elements['outerBorder'])" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
-    </tr>
-    <tr>
-      <td><label for="innerBorder">Inner border</label></td>
-      <td><input name="innerBorder" id="innerBorder" value="#ffffff" size="20" type="text">
-        <a href="javascript:TCP.popup(document.forms['adminForm'].elements['innerBorder']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
-    </tr>
-    <tr>
-      <td><label for="barPosition">Bar Position</label></td>
-      <td><input name="barPosition" id="barPosition" value="25" size="20" type="text">
-        pixels from the left</td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Left Box</strong></td>
-    </tr>
-    <tr>
-      <td><label for="leftText">Text</label></td>
-      <td><input name="leftText" id="leftText" value="RSS" size="20" type="text"></td>
-    </tr>
-    <tr>
-      <td><label for="leftFill">Background</label></td>
-      <td><input name="leftFill" id="leftFill" value="#ff6600" size="20"  type="text">
-        <a href="javascript:TCP.popup(document.forms['adminForm'].elements['leftFill']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
-    </tr>
-    <tr>
-      <td><label for="leftTextColor">Text color</label></td>
-      <td><input name="leftTextColor" id="leftTextColor" value="#ffffff" size="20" type="text">
-        <a href="javascript:TCP.popup(document.forms['adminForm'].elements['leftTextColor']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
-    </tr>
-    <tr>
-      <td><label for="leftTextPosition">Text start</label></td>
-      <td><input name="leftTextPosition" id="leftTextPosition" value="5" size="20" type="text">
-        pixels from the left</td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Right Box</strong></td>
-    </tr>
-    <tr>
-      <td><label for="rightText">Text</label></td>
-      <td><input name="rightText" id="rightText" value="Valid" size="20" type="text"></td>
-    </tr>
-    <tr>
-      <td><label for="rightFill">Background</label></td>
-      <td><input name="rightFill" id="rightFill" value="#898E79" size="20" type="text">
-        <a href="javascript:TCP.popup(document.forms['adminForm'].elements['rightFill']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
-    </tr>
-    <tr>
-      <td><label for="rightTextColor">Text color</label></td>
-      <td><input name="rightTextColor" id="rightTextColor" value="#ffffff" size="20" type="text">
-        <a href="javascript:TCP.popup(document.forms['adminForm'].elements['rightTextColor']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
-    </tr>
-    <tr>
-      <td><label for="rightTextPosition">Text start</label></td>
-      <td><input name="rightTextPosition" id="rightTextPosition" value="29" size="20" type="text">
-        pixels from the bar</td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	  <p style="padding:10px 0px 0px 0px;margin:0px">
-          <input name="Reset-Render" value="Reset" type="button" onclick="renderImage('reset')" />
-          <input name="Render" value="Render" type="button" onclick="renderImage('render');" />
-          <input name="Save" value="Save" type="button" id="btnSave" onclick="renderImage('save');" />
-      </p>
-	 </td>
-    </tr>
-    <tr><td colspan="2">    
-    </td></tr>
-  </table>
-  <div id="btnsavetip" style="clear:both; display:none"></div>
-  <input type="hidden" name="option" value="com_ninjarsssyndicator" />
-  <input type="hidden" name="task" value="" />
-  <input type="hidden" name="save_img" value="0" />
-  <input type="hidden" name="controller" id="controller" value="buttonmaker" />
-  <?php echo JHTML::_( 'form.token' ); ?>
+	<table align="left">
+	<tr>
+		<td colspan="2"><strong>Borders</strong></td>
+	</tr>
+	<tr>
+		<td><label for="outerBorder">Outer border</label></td>
+		<td><input name="outerBorder" id="outerBorder" value="#666666" size="20" type="text">
+		<a href="javascript:TCP.popup(document.forms['adminForm'].elements['outerBorder'])" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
+	</tr>
+	<tr>
+		<td><label for="innerBorder">Inner border</label></td>
+		<td><input name="innerBorder" id="innerBorder" value="#ffffff" size="20" type="text">
+		<a href="javascript:TCP.popup(document.forms['adminForm'].elements['innerBorder']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
+	</tr>
+	<tr>
+		<td><label for="barPosition">Bar Position</label></td>
+		<td><input name="barPosition" id="barPosition" value="25" size="20" type="text">
+		pixels from the left</td>
+	</tr>
+	<tr>
+		<td colspan="2"><strong>Left Box</strong></td>
+	</tr>
+	<tr>
+		<td><label for="leftText">Text</label></td>
+		<td><input name="leftText" id="leftText" value="RSS" size="20" type="text"></td>
+	</tr>
+	<tr>
+		<td><label for="leftFill">Background</label></td>
+		<td><input name="leftFill" id="leftFill" value="#ff6600" size="20"	type="text">
+		<a href="javascript:TCP.popup(document.forms['adminForm'].elements['leftFill']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
+	</tr>
+	<tr>
+		<td><label for="leftTextColor">Text color</label></td>
+		<td><input name="leftTextColor" id="leftTextColor" value="#ffffff" size="20" type="text">
+		<a href="javascript:TCP.popup(document.forms['adminForm'].elements['leftTextColor']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
+	</tr>
+	<tr>
+		<td><label for="leftTextPosition">Text start</label></td>
+		<td><input name="leftTextPosition" id="leftTextPosition" value="5" size="20" type="text">
+		pixels from the left</td>
+	</tr>
+	<tr>
+		<td colspan="2"><strong>Right Box</strong></td>
+	</tr>
+	<tr>
+		<td><label for="rightText">Text</label></td>
+		<td><input name="rightText" id="rightText" value="Valid" size="20" type="text"></td>
+	</tr>
+	<tr>
+		<td><label for="rightFill">Background</label></td>
+		<td><input name="rightFill" id="rightFill" value="#898E79" size="20" type="text">
+		<a href="javascript:TCP.popup(document.forms['adminForm'].elements['rightFill']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
+	</tr>
+	<tr>
+		<td><label for="rightTextColor">Text color</label></td>
+		<td><input name="rightTextColor" id="rightTextColor" value="#ffffff" size="20" type="text">
+		<a href="javascript:TCP.popup(document.forms['adminForm'].elements['rightTextColor']);" ><img src="<?php echo JURI::root() ?>administrator/components/com_ninjarsssyndicator/assets/images/sel.gif" alt="Color Picker" title="Pick a color" border="0" height="13" width="15"></a></td>
+	</tr>
+	<tr>
+		<td><label for="rightTextPosition">Text start</label></td>
+		<td><input name="rightTextPosition" id="rightTextPosition" value="29" size="20" type="text">
+		pixels from the bar</td>
+	</tr>
+	<tr>
+	<td colspan="2">	
+	</td></tr>
+	</table>
+	<div style="position: fixed; top: 150px; right: 10px; width: 300px; padding: 5px; border: 1px #aaaaaa solid; border-radius: 15px 15px 15px 15px; background-color: #F4F4F4;">
+	<table>
+	<tr>
+		<td colspan="2" width="300">
+		<p style="padding:10px 0px 0px 0px;margin:0px">
+			<input name="Reset-Render" value="Reset" type="button" onclick="renderImage('reset')" class="btn btn-small" />
+			<input name="Render" value="Render" type="button" onclick="renderImage('render');" class="btn btn-small" />
+			<input name="Save" value="Save" type="button" id="btnSave" onclick="renderImage('save');" class="btn btn-small" />
+		</p>
+		</td>
+	</tr>
+	<tr>
+		<td ><strong>Preview image:</strong></td>
+		<td id="gen" width="80"><img src="<?php echo JURI::root() ?>administrator/index.php?option=com_ninjarsssyndicator&view=buttonmaker&layout=button&outerBorder=#666666&innerBorder=#ffffff&barPosition=25&leftFill=#ff6600&leftText=RSS&leftTextColor=#ffffff&leftTextPosition=5&rightFill=#898E79&rightText=Valid&rightTextColor=#ffffff&rightTextPosition=29" alt="" id="generated" height="15" width="80"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div id="btnsavetip" style="clear:both; display:none"></div></td>
+	</tr>
+	</table>
+	</div>
+	<input type="hidden" name="option" value="com_ninjarsssyndicator" />
+	<input type="hidden" name="task" value="" />
+	<input type="hidden" name="save_img" value="0" />
+	<input type="hidden" name="controller" id="controller" value="buttonmaker" />
+	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
 <script type="text/javascript">
 function toggleTip(msg)
@@ -140,25 +146,25 @@ function renderImage(action) {
 	{
 		imgUrl = renderImage(''); 
 		/*frm.getElement('input[name=task]').value = 'buttonmaker.save';
-        frm.getElement('input[name=controller]').value = 'buttonmaker';
-        frm.getElement('input[name=save_img]').value = '1';
+		frm.getElement('input[name=controller]').value = 'buttonmaker';
+		frm.getElement('input[name=save_img]').value = '1';
 		frm.send({
-            method: 'POST',
-            onRequest: function() {
-            	toggleTip('');
-                $('btnSave').setAttribute('disabled', 'disabled');
-            },
-            onComplete: function() {
-            	$('btnSave').removeAttribute('disabled'); 
-            	toggleTip(this.response.text);
-                frm.getElement('input[name=save_img]').value = '0';
-            },  
-            onFailure:function() {
-            	$('btnSave').removeAttribute('disabled');
-                frm.getElement('input[name=save_img]').value = '0';
-            }  
-                      
-        });*/
+			method: 'POST',
+			onRequest: function() {
+				toggleTip('');
+				$('btnSave').setAttribute('disabled', 'disabled');
+			},
+			onComplete: function() {
+				$('btnSave').removeAttribute('disabled'); 
+				toggleTip(this.response.text);
+				frm.getElement('input[name=save_img]').value = '0';
+			},	
+			onFailure:function() {
+				$('btnSave').removeAttribute('disabled');
+				frm.getElement('input[name=save_img]').value = '0';
+			}	
+						
+		});*/
 		
 		document.getElementById('btnsavetip').disabled='true';
 		
@@ -197,7 +203,7 @@ function renderImage(action) {
 	var inputElems = frm.getElementsByTagName("input");
 	var qs = "";
 	for (var i = 0 ; i < inputElems.length; i++)
-    {
+	{
 		if (inputElems[i].getAttribute("type")=="text") {
 		 var currElem = inputElems[i];
 		 qs+=currElem.getAttribute("id");

@@ -1,15 +1,15 @@
 <?php
-/**
+/*
 * @version		2.0
 * @package		com_ninjarsssydicator
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
-/**
+/*
  * @version		$Id: group.php 48 2011-06-25 08:22:19Z trung3388@gmail.com $
  * @copyright	JoomAvatar.com
  * @author		Nguyen Quang Trung

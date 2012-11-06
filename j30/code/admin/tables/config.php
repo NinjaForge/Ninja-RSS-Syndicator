@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -29,8 +29,8 @@ class NinjaRssSyndicatorTableConfig extends JTable
 	/**
 	 * Overloaded bind function
 	 *
-	 * @param       array           named array
-	 * @return      null|string     null is operation was satisfactory, otherwise returns an error
+	 * @param		array			named array
+	 * @return		null|string	 null is operation was satisfactory, otherwise returns an error
 	 * @see JTable:bind
 	 * @since 1.5
 	 */
@@ -49,9 +49,9 @@ class NinjaRssSyndicatorTableConfig extends JTable
 	/**
 	 * Overloaded load function
 	 *
-	 * @param       int $pk primary key
-	 * @param       boolean $reset reset data
-	 * @return      boolean
+	 * @param		int $pk primary key
+	 * @param		boolean $reset reset data
+	 * @return		boolean
 	 * @see JTable:load
 	 */
 	public function load($pk = null, $reset = true) 

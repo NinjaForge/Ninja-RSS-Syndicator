@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -37,7 +37,7 @@ class NinjaRssSyndicatorViewFeeds extends JViewLegacy
 	protected function addToolbar()
 	{
 		$text = 'Feed manager';
-		JToolBarHelper::title(   JText::_( 'Ninja RSS Syndicator').': <small><small>[ ' . $text.' ]</small></small>', 'article-add.png' );
+		JToolBarHelper::title(	JText::_( 'Ninja RSS Syndicator').': <small><small>[ ' . $text.' ]</small></small>', 'article-add.png' );
 		JToolBarHelper::addNew('feed.add', 'JTOOLBAR_NEW');
 		JToolBarHelper::publish('feed.publish', 'JTOOLBAR_PUBLISH', true);
 		JToolBarHelper::unpublish('feed.unpublish', 'JTOOLBAR_UNPUBLISH', true);

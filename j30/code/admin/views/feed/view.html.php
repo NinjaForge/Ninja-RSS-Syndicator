@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -39,7 +39,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$fulltext[] = JHTML::_('select.option', "1","Intro text + Read more link");
 		$fulltext[] = JHTML::_('select.option', "2","Intro text + Full text");		
 		$fulltext[] = JHTML::_('select.option', "3","Full text only");
-		$lists['fulltextlist'] = JHTML::_('select.genericlist', $fulltext, 'msg_fulltext', 'class="inputbox"', 'value', 'text',  $isNew ? '1': $feed->msg_fulltext );
+		$lists['fulltextlist'] = JHTML::_('select.genericlist', $fulltext, 'msg_fulltext', 'class="inputbox"', 'value', 'text',	$isNew ? '1': $feed->msg_fulltext );
 		
 		$orderings[] = JHTML::_('select.option', 'date','Created Date Ascending');
 		$orderings[] = JHTML::_('select.option', 'rdate','Created Date Descending');
@@ -56,14 +56,14 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$lists['numWordsList'] = JHTML::_('select.genericList', $numWords, 'msg_numWords', 'class="inputbox"','value', 'text', $isNew ? $default->numWords : $feed->msg_numWords, 'msg_numWords' );
 		
 		$FPItemsOnly[] = JHTML::_( 'select.option', '0','All items');
-    $FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
+	$FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
 		$FPItemsOnly[] = JHTML::_( 'select.option', '2','Non-frontpage items only');
 		$lists['FPItemsOnlyList'] =JHTML::_( 'select.genericList',$FPItemsOnly, 'msg_FPItemsOnly', 'class="inputbox"','value', 'text',$isNew ? $default->FPItemsOnly : $feed->msg_FPItemsOnly, 'msg_FPItemsOnly' );
 		
-		$yesNoList[]   = JHTML::_( 'select.option', "1","Yes");
-		$yesNoList[]   = JHTML::_( 'select.option', "0","No");
+		$yesNoList[]	= JHTML::_( 'select.option', "1","Yes");
+		$yesNoList[]	= JHTML::_( 'select.option', "0","No");
 		$lists['renderImagesList'] = JHTML::_( 'select.genericList', $yesNoList, 'feed_renderImages', 'class="inputbox"','value', 'text',$isNew ? '1' : $feed->feed_renderImages );
-	  $lists['renderPublishedList'] = JHTML::_( 'select.genericList', $yesNoList, 'published', 'class="inputbox"','value', 'text',$isNew ? NULL : $feed->published);
+		$lists['renderPublishedList'] = JHTML::_( 'select.genericList', $yesNoList, 'published', 'class="inputbox"','value', 'text',$isNew ? NULL : $feed->published);
 		$lists['renderHTMLList'] =JHTML::_( 'select.genericList',$yesNoList, 'feed_renderHTML', 'class="inputbox"','value', 'text', $isNew ? $default->renderHTML : $feed->feed_renderHTML , 'feed_renderHTML');
 		$lists['renderAuthorList'] = JHTML::_('select.genericList', $yesNoList, 'feed_renderAuthorFormat', 'class="inputbox"','value', 'text', $isNew ? $default->renderAuthorFormat : $feed->feed_renderAuthorFormat, 'feed_renderAuthorFormat' );
 		
@@ -87,7 +87,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		else
 			$sectSelected = explode(',',$feed->msg_sectlist);
 		
-		$lists['sectionlist'] = JHTML::_( 'select.genericList',$sectOptions, 'msg_sectlist' . '[]', ' class="inputbox"  multiple="true"', 'value', 'text', $sectSelected );*/
+		$lists['sectionlist'] = JHTML::_( 'select.genericList',$sectOptions, 'msg_sectlist' . '[]', ' class="inputbox"	multiple="true"', 'value', 'text', $sectSelected );*/
 		
 		
 		
@@ -110,7 +110,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$model->getExCategories(1,$menu_array);
 		$session = JFactory::getSession();
 		$exCatOptions = $session->get('_exCategories');				
-		$lists['excludedcatlist'] = JHTML::_( 'select.genericList', $exCatOptions, 'msg_excatlist' . '[]', 'class="inputbox"  multiple="true"', 'value', 'text', $exCatSelected );
+		$lists['excludedcatlist'] = JHTML::_( 'select.genericList', $exCatOptions, 'msg_excatlist' . '[]', 'class="inputbox"	multiple="true"', 'value', 'text', $exCatSelected );
 		
 		
 		//Feedbutton images uit de directory laden
@@ -125,10 +125,10 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 			{
 				if( preg_match('/(\.gif$|\.png$|\.jpg|\.jpeg)$/is', $file) )
 				{
-				   $button_images[$button_col_count] = $file;
-				   $button_name[$button_col_count] = ucfirst(str_replace("_", " ", preg_replace('/^(.*)\..*$/', '\1', $file)));
-				   $buttons[] = JHTML::_( 'select.option', $button_images[$button_col_count], $button_name[$button_col_count]);
-				   $button_col_count++;				
+					$button_images[$button_col_count] = $file;
+					$button_name[$button_col_count] = ucfirst(str_replace("_", " ", preg_replace('/^(.*)\..*$/', '\1', $file)));
+					$buttons[] = JHTML::_( 'select.option', $button_images[$button_col_count], $button_name[$button_col_count]);
+					$button_col_count++;				
 				}
 			}
 		}
@@ -136,7 +136,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$lists['feedButtons'] = JHTML::_( 'select.genericList', $buttons, 'feed_button', 'onchange="loadButton(this)" class="inputbox" ','value', 'text',$isNew ? 'rss20.gif' : $feed->feed_button);
 		
 		//Editor
-		$editor  = JFactory::getEditor();	
+		$editor	= JFactory::getEditor();	
 		
 		$this->assignRef('id', $feed->id);
 		$this->assignRef('name', $feed->feed_name);
@@ -166,7 +166,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		
 		$lists = array();
 		
-		if ($isNew)  {
+		if ($isNew)	{
 			JToolBarHelper::cancel();
 			$default = $this->get('DefaultData');			
 		} else {

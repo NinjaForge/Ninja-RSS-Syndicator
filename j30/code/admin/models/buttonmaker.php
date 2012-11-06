@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -23,7 +23,7 @@ class NinjaRssSyndicatorModelButtonMaker extends JModelLegacy
 
 	function save(){	
 		$url = urldecode(JRequest::getVar('imgurl', '', 'post', 'string'));
-		$imgName =  urldecode(JRequest::getVar('imgname', '', 'post', 'string'));
+		$imgName =	urldecode(JRequest::getVar('imgname', '', 'post', 'string'));
 		$savePath = JPATH_ROOT . DS .'images';
 		if(!$url || !$imgName){
 			return 'Image invalid!';			

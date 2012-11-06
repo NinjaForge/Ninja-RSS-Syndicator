@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -27,7 +27,7 @@ class ninjarsssyndicatorModelConfig extends JModelLegacy
 	public function _buildQuery()
 	{
 		$query = ' SELECT * FROM #__ninjarsssyndicator '.
-					'  WHERE id = 1 '
+					'	WHERE id = 1 '
 		;
 
 		return $query;
@@ -50,7 +50,7 @@ class ninjarsssyndicatorModelConfig extends JModelLegacy
 	public function saveConfig(){
 		$id = JRequest::getVar('id', '1', 'post', 'int');
 		$msg = addslashes(JRequest::getVar('msg', 'Get the latest news direct to your desktop', 'post', 'string'));
-        //$msg = $this->_db->Quote($this->_db->getEscaped($msg), false);
+		//$msg = $this->_db->Quote($this->_db->getEscaped($msg), false);
 		$defaultType = JRequest::getVar('defaultType', '1.0', 'post', 'string');
 		$count = JRequest::getVar('count', '10', 'post', 'string');
 		$orderby = JRequest::getVar('orderby', 'rdate', 'post', 'string');
@@ -58,12 +58,12 @@ class ninjarsssyndicatorModelConfig extends JModelLegacy
 		
 		$cache = JRequest::getVar('cache', '3600', 'post', 'int');
 		$imgUrl = addslashes(JRequest::getVar('imgUrl', '', 'post', 'string'));
-        //$imgUrl = $this->_db->Quote($this->_db->getEscaped($imgUrl), false);
+		//$imgUrl = $this->_db->Quote($this->_db->getEscaped($imgUrl), false);
 		$renderAuthorFormat = JRequest::getVar('renderAuthorFormat', '1', 'post', 'string');
 		$renderHTML = JRequest::getVar('renderHTML', '0', 'post', 'int');
 		$FPItemsOnly = JRequest::getVar('FPItemsOnly', '1', 'post', 'int');
 		$description = addslashes(JRequest::getVar('description', '', 'post', 'string'));
-        //$description = $this->_db->Quote($this->_db->getEscaped($description), false);
+		//$description = $this->_db->Quote($this->_db->getEscaped($description), false);
 
 		$query = "UPDATE #__ninjarsssyndicator SET 
 						msg = '$msg',

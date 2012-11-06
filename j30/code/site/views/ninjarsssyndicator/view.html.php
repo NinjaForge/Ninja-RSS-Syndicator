@@ -5,7 +5,7 @@
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
 * @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
 */
 
@@ -27,7 +27,7 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JViewLegacy
 		$this->assignRef('type', $feed->feed_type);
 		$this->assignRef('sectlist', $feed->msg_sectlist);
 		$this->assignRef('excatlist', $feed->msg_excatlist); 
-		$this->assignRef('fulltext', $feed->msg_fulltext);  
+		$this->assignRef('fulltext', $feed->msg_fulltext);	
 		$this->assignRef('cat', $feed->msg_sectcat);
 		$this->assignRef('count', $feed->msg_count);
 		$this->assignRef('orderby', $feed->msg_orderby);
@@ -41,8 +41,8 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JViewLegacy
 		$this->assignRef('imgUrl', $feed->feed_imgUrl);		
 		$this->assignRef('contentPlugins', $feed->msg_contentPlugins);
 		
-    //TODO - add these columns if enough people request them
-    //$this->assignRef('ninjaRSSFeedRowPlugins', $feed->msg_ninjaRSSFeedRowPlugins);		
+	//TODO - add these columns if enough people request them
+	//$this->assignRef('ninjaRSSFeedRowPlugins', $feed->msg_ninjaRSSFeedRowPlugins);		
 	//$this->assignRef('ninjaRSSFeedPlugins', $feed->feed_ninjaRSSFeedPlugins);
 		
 		$this->assignRef('content', $content);
