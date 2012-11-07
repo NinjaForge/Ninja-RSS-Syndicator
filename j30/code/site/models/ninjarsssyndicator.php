@@ -154,20 +154,6 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		if ($exitems != "") {
 			$where	.= "\n AND a.id NOT IN (" . $exitems . ")";
 		}
-				
-		if ($seclist!=="") {
-			if($seclist == "0")// Xipat - VH: Query uncategorised
-			{
-					$where	.= "\n AND a.catid = 0";
-				$queryUncat= " OR a.catid = 0 ";
-			}
-			else {
-				//$where	.= "\n AND IFNULL(s.id,0) IN (" . $seclist . ")";
-			}
-		}	
-		else {
-			$queryUncat= " OR a.catid = 0 ";
-		}
 		
 		if ($excatlist!=="") {
 		
@@ -180,10 +166,10 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		
 		$nullDate	= $db->getNullDate();
 		$where	.= "\n AND a.access > 0"	// item only public access check
-			.	"\n AND (c.access <= 0 $queryUncat) "	// category only public access check
+			//.	"\n AND (c.access <= 0 $queryUncat) "	// category only public access check
 			//.	"\n AND (s.access <= 0 $queryUncat)"	// section only public access check
 			.	"\n" . 'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).')'
-			.	"\n" . 'AND ( a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')'
+			.	"\n" . 'AND (a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')'
 			;
 
 		$query .= $where;
