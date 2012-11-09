@@ -22,7 +22,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		//$sections = $this->get('Sections');
 		
 		$isNew = ($feed->id<1);
-		
+		$default = $this->get('DefaultData');
 		//rss type list
 		
 		$rssType[] = JHTML::_('select.option', '2.0','RSS 2.0');
@@ -137,17 +137,20 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		
 		//Editor
 		$editor	= JFactory::getEditor();	
+		$feed->msg_count = $isNew ? $default->count:$feed->msg_count;
+		$feed->feed_cache = $isNew ? $default->cache:$feed->feed_cache;
+		$feed->feed_description = $isNew ? $default->description : $feed->feed_description;
 		
 		$this->assignRef('id', $feed->id);
 		$this->assignRef('name', $feed->feed_name);
-		$this->assignRef('count', $feed->msg_count = $isNew? $default->count:$feed->msg_count);
-		$this->assignRef('cache', $feed->feed_cache = $isNew? $default->cache:$feed->feed_cache);
+		$this->assignRef('count', $feed->msg_count);
+		$this->assignRef('cache', $feed->feed_cache);
 		$this->assignRef('imgUrl', $feed->feed_imgUrl);
 		$isNew? $feed->feed_button='rss20.gif':$feed->feed_button;
 		$this->assignRef('BtnImgUrl', $feed->feed_button);
 		$this->assignRef('exitems', $feed->msg_exitems);
 		$this->assignRef('includetags', $feed->msg_includetags);
-		$this->assignRef('description', $feed->feed_description = $isNew ? $default->description : $feed->feed_description);
+		$this->assignRef('description', $feed->feed_description);
 		$this->assignRef('editor', $editor);
 		$this->assignRef('lists', $lists);
 		
@@ -168,7 +171,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		
 		if ($isNew)	{
 			JToolBarHelper::cancel();
-			$default = $this->get('DefaultData');			
+			$default = $this->get('DefaultData');
 		} else {
 			// for existing items the button is renamed `close`
 			JToolBarHelper::cancel( 'cancel', 'close' );

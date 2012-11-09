@@ -20,7 +20,7 @@ class NinjaRssSyndicatorController extends JControllerLegacy
 		
 	}
 
-	function display()
+	public function display($cachable = false, $urlparams = false)
 	{
 	
 		parent::display();

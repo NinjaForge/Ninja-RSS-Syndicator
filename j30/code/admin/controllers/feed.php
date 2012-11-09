@@ -34,13 +34,13 @@ class NinjaRssSyndicatorControllerFeed extends JControllerForm
 		$this->registerTask( 'apply'	, 	'save' );
 	}
 	
-	public function cancel()
+	public function cancel($key = null)
 	{
 		//$msg = JText::_( 'Operation Cancelled' );
 		$this->setRedirect( $this->_link );
 	}
 	
-	public function edit()
+	public function edit($key = null, $urlVar = null)
 	{
 		
 		JRequest::setVar( 'view', 'feed' );
@@ -50,7 +50,7 @@ class NinjaRssSyndicatorControllerFeed extends JControllerForm
 		parent::display();
 	}
 	
-	public function save()
+	public function save($key = null, $urlVar = null)
 	{
 		$model = $this->getModel('feed');
 		

@@ -25,6 +25,9 @@ class NinjaRssSyndicatorController extends JControllerLegacy
 		JRequest::setVar('view', JRequest::getCmd('view', 'feeds'));
 		$this->addSubMenu($this->input->get('view', 'feeds'));
 		
+		$view   = $this->input->get('view', 'index', 'word');
+		$layout = $this->input->get('layout', 'index', 'word');
+
 		if ($view == 'feed' && $layout == 'edit' && !$this->checkEditId('com_ninjarsssyndicator.edit.feed', $id)) {
 
 			// Somehow the person just went to the form - we don't allow that.
