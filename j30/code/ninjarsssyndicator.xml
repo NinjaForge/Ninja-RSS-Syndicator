@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
-	<name>Ninja RSS Syndicator</name>
+	<name>com_ninjarsssyndicator</name>
 	<!-- The following elements are optional and free of formatting constraints -->
-	<name>Ninja RSS Syndicator</name>
-	<creationDate>2008 10 18</creationDate>
+	<creationDate>2012-11-09</creationDate>
 	<author>Daniel Chapman</author>
 	<authorEmail>daniel@ninjaforge.com</authorEmail>
 	<authorUrl>http://ninjaforge.com</authorUrl>
@@ -11,7 +10,7 @@
 	<license><![CDATA[ Ninja RSS Syndicator is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">General Public License</a> as published by the Free Software Foundation. ]]></license>
 	<version>2.0</version>
 	<!-- The description is optional and defaults to the name -->
-	<description>Ninja RSS Syndicator</description>
+	<description>Ninja Rss Syndicator</description>
 	
 	<!-- Site Main File Copy Section -->
 	<files folder="site">
@@ -26,15 +25,15 @@
 	
 	<administration>
 		<!-- Administration Menu Section -->
-		<menu img="../administrator/components/com_ninjarsssyndicator/assets/images/nficon.png" link="option=com_ninjarsssyndicator&amp;view=feeds" alias="Ninja RSS Syndicator">Ninja RSS Syndicator</menu>
+		<menu img="../administrator/components/com_ninjarsssyndicator/assets/images/nficon.png" view="feeds">COM_NINJARSSSYNDICATOR</menu>
 		<submenu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Dashboard" alias="Dashboard" view="info" link="option=com_ninjarsssyndicator&amp;view=info">Dashboard</menu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Feeds" alias="Feeds" view="feeds" link="option=com_ninjarsssyndicator&amp;view=feeds">Feeds</menu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Button Maker" alias="Button Maker" view="buttonmaker" link="option=com_ninjarsssyndicator&amp;view=buttonmaker">Button Maker</menu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Default Settings" alias="Default Settings" view="config" link="option=com_ninjarsssyndicator&amp;view=config">Default Settings</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" view="info">COM_NINJARSSSYNDICATOR_DASHBOARD</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" view="feeds">COM_NINJARSSSYNDICATOR_FEEDS</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" view="buttonmaker">COM_NINJARSSSYNDICATOR_BUTTON_MAKER</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" view="config">COM_NINJARSSSYNDICATOR_DEFAULT_SETTINGS</menu>
 		</submenu>
+		<!-- Admin Main File Copy Section -->
 		<files folder="admin">
-			<!-- Admin Main File Copy Section -->
 			<filename>index.html</filename>
 			<filename>ninjarsssyndicator.php</filename>
 			<filename>controller.php</filename>
@@ -45,8 +44,14 @@
 			<folder>views</folder>
 			<folder>controllers</folder>
 		</files>
+		<!-- Admin Language Files Section -->
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_ninjarsssyndicator.ini</language>
+			<language tag="en-GB">language/en-GB.com_ninjarsssyndicator.sys.ini</language>
+		</languages>
 	</administration>
 	
+	<!-- Install Database Section -->
 	<install>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install.mysql.sql</file>

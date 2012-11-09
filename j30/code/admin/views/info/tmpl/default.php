@@ -21,12 +21,17 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <p>If you need help with configuring this component just ask on the <a href="http://ninjaforge.com/" target="_blank">NinjaForge</a> forums.</p>
 
 <h3>Credits</h3>
-<p>Ninja RSS Syndicator is based upon the Joomla 1.0 DS-Syndicate component and was converted to Joomla 1.5 by XiPat.<br />
-> Ninja RSS Syndicator makes use of the <a href="http://www.bitfolge.de/rsscreator-en.html" target="_blank">FeedCreator class</a> by Kai Blankenhorn and the excellent XMLRPC Library from <a href="http://scripts.incutio.com/xmlrpc/" target="_blank">Incutio</a>.<br />
-> The Button Maker code was a creation of <a href="http://minimalverbosity.com/2003/May/19/buttons.htm" target="_blank">Bill Zeller</a> with an user interface from <a href="http://www.kalsey.com/tools/buttonmaker/" target="_blank">here</a>.<br />
-> The MetaWeblog and blogger APIs were implemented by <a href="http://www.vd-tools.com" target="_blank">Gayle Davies</a> with help from code from NucleusCMS.<br />
-> The tags feature was coded and shared by <a href="mailto:jroakes@gmail.com">JR Oakes</a> aka jroakes.</p><br />
-> Converted to Joomla! 3.0 by <a href="http://omar84.com" target="_blank">Omar M.</a>
+<p>
+<ul>
+	<li> Ninja RSS Syndicator is based upon the Joomla 1.0 DS-Syndicate component.
+	<li> Ninja RSS Syndicator makes use of the <a href="http://www.bitfolge.de/rsscreator-en.html" target="_blank">FeedCreator class</a> by Kai Blankenhorn and the excellent XMLRPC Library from <a href="http://scripts.incutio.com/xmlrpc/" target="_blank">Incutio</a>.
+	<li> The Button Maker code was a creation of <a href="http://minimalverbosity.com/2003/May/19/buttons.htm" target="_blank">Bill Zeller</a> with a user interface from <a href="http://www.kalsey.com/tools/buttonmaker/" target="_blank">here</a>.
+	<li> The MetaWeblog and blogger APIs were implemented by <a href="http://www.vd-tools.com" target="_blank">Gayle Davies</a> with help from code from NucleusCMS.
+	<li> The tags feature was coded and shared by <a href="mailto:jroakes@gmail.com">JR Oakes</a> aka jroakes.
+	<li> Ninja RSS Syndicator was Converted to Joomla! 1.5 by XiPat.
+	<li> Ninja RSS Syndicator was Converted to Joomla! 3.0 by <a href="http://omar84.com" target="_blank">Omar M.</a>
+</ul>
+</p>
 
 <h3>License &amp; Copyright</h3>
 <p>Ninja RSS Syndicator is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">General Public License</a> as published by the Free Software Foundation.<br />
