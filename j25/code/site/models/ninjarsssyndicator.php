@@ -179,7 +179,7 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		}
 		
 	    $nullDate    = $db->getNullDate();
-		$where	.= "\n AND a.access > 0"	// item only public access check
+		$where	.= "\n AND (a.access = 1 OR a.access = 5)"	// item only public access check
 			.  "\n AND (c.access <= 0 $queryUncat) "	// category only public access check
 			//.  "\n AND (s.access <= 0 $queryUncat)"	// section only public access check
 			.  "\n" . 'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).')'
@@ -215,10 +215,8 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		$database = JFactory::getDBO();;
 		$itemids = NULL;
 	
-		$database->setQuery("SELECT id, component_id "
-							. "\n FROM #__menu "
-							. "\n WHERE type = '$type'"
-							. "\n AND published = 1");
+		$query = "SELECT id, component_id FROM #__menu WHERE type = '$type' AND published = 1";
+		$database->setQuery($query);
 		$rows = $database->loadObjectList();
 		foreach ($rows as $row) {
 			$itemids[$row->componentid] = $row->id;
