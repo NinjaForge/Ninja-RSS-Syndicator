@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `#__ninjarsssyndicator`;
+-- DROP TABLE IF EXISTS `#__ninjarsssyndicator`;
 
 CREATE TABLE IF NOT EXISTS `#__ninjarsssyndicator` (
 	`id` tinyint(4) NOT NULL auto_increment,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `#__ninjarsssyndicator` (
 INSERT IGNORE INTO `#__ninjarsssyndicator` (`id`, `msg`, `defaultType`, `count`, `orderby`, `numWords`, `cache`, `imgUrl`, `renderHTML`, `FPItemsOnly`)
 									VALUES (1,'Get the latest news direct to your desktop','2.0','10','rdate',0,0,'',1, 0);
 
-DROP TABLE IF EXISTS `#__ninjarsssyndicator_feeds`;
+-- DROP TABLE IF EXISTS `#__ninjarsssyndicator_feeds`;
 	
 CREATE TABLE IF NOT EXISTS `#__ninjarsssyndicator_feeds` (
 	`id` tinyint(4) NOT NULL auto_increment, 
