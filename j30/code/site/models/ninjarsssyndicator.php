@@ -131,13 +131,12 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		
 		/* FROM */
 		$query	.=	"\n FROM #__content AS a"		
-				. 	"\n LEFT JOIN #__users AS u ON u.id = a.created_by"
-				.		"\n LEFT JOIN `#__categories` AS c on c.id = a.catid ";
-				//.		"\n LEFT JOIN `#__sections` AS s on s.id = c.section ";
+				.	"\n LEFT JOIN #__users AS u ON u.id = a.created_by"
+				.	"\n LEFT JOIN `#__categories` AS c on c.id = a.catid ";
 		
 		if ($useTags) {
-			$query	.= "\nLEFT JOIN `#__tag_term_content` AS tc on tc.cid = a.id " /* Joomla Tags Addition */
-					.	"\nLEFT JOIN `#__tag_term` AS t on t.id = tc.tid "; /* Joomla Tags Addition */
+			$query	.=	"\n LEFT JOIN `#__tag_term_content` AS tc on tc.cid = a.id " /* Joomla Tags Addition */
+					.	"\n LEFT JOIN `#__tag_term` AS t on t.id = tc.tid "; /* Joomla Tags Addition */
 		}
 		
 		
@@ -165,12 +164,11 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		}
 		
 		$nullDate	= $db->getNullDate();
-		$where	.= "\n AND a.access > 0"	// item only public access check
-			//.	"\n AND (c.access <= 0 $queryUncat) "	// category only public access check
-			//.	"\n AND (s.access <= 0 $queryUncat)"	// section only public access check
-			.	"\n" . 'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).')'
-			.	"\n" . 'AND (a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')'
-			;
+		$where	.=	"\n AND (a.access = 1 OR a.access = 5)"	// item only public access check
+				.	"\n AND (c.access = 1 OR c.access = 5) "	// category only public access check
+				.	"\n AND (a.publish_up = ".$db->Quote($nullDate)." OR a.publish_up <= ".$db->Quote($now).")"
+				.	"\n AND (a.publish_down = ".$db->Quote($nullDate)." OR a.publish_down >= ".$db->Quote($now).")"
+				;
 
 		$query .= $where;
 		
@@ -182,7 +180,7 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 
 
 		/* ORDER BY, LIMIT ...	construction */
-		$query	.= "\nORDER BY $orderby".	($count ? (" LIMIT " . $count) : "");
+		$query	.= "\n ORDER BY $orderby".	($count ? (" LIMIT " . $count) : "");
 		
 		
 		//we first try with Joomla Tag
@@ -200,11 +198,9 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 		$type = 'content_blog_section';
 		$database = JFactory::getDBO();;
 		$itemids = NULL;
-	
-		$database->setQuery("SELECT id, component_id "
-							. "\n FROM #__menu "
-							. "\n WHERE type = '$type'"
-							. "\n AND published = 1");
+		
+		$query = "SELECT id, component_id FROM #__menu WHERE type = '$type' AND published = 1";
+		$database->setQuery($query);
 		$rows = $database->loadObjectList();
 		foreach ($rows as $row) {
 			$itemids[$row->componentid] = $row->id;
