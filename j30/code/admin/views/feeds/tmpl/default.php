@@ -15,7 +15,7 @@ $rootpath = JURI::root();
 <form action="index.php" method="post" name="adminForm" id="adminForm" class="adminForm">
 
 	<div id="editcell">
-		<table class="adminlist">
+		<table class="adminlist table table-striped">
 			<thead>
 				<tr>
 					<th width="5">#</th>
@@ -70,7 +70,7 @@ $rootpath = JURI::root();
 				<td><img src="<?php if($row->feed_button != "") {echo ($rootpath . "components/com_ninjarsssyndicator/assets/images/buttons/".$row->feed_button);} ?>"></td>
 				<td><?php echo $row->feed_type; ?></td>
 				<td><a href="<?php echo $feedurl;?>" target="_blank"><?php echo $feedurl;?></a></td>
-				<td><?php echo $published ;?></td>
+				<td><div class="btn"><?php echo $published ;?></div></td>
 			<?php		$k = 1 - $k; ?>		</tr>
 			<?php	}
 		?>
