@@ -1177,6 +1177,8 @@ class PIECreator01 extends FeedCreator {
 			if ($this->items[$i]->date=="") {
 				$this->items[$i]->date = time();
 			}
+			if (strtotime($this->items[$i]->date) > strtotime($this->items[$i]->updated))
+				$this->items[$i]->updated = $this->items[$i]->date;
 			$itemDate = new FeedDate($this->items[$i]->date);
 			$itemUpdated = new FeedDate($this->items[$i]->updated);
 			$feed.= "		<published>".htmlspecialchars($itemDate->iso8601())."</published>\n";
