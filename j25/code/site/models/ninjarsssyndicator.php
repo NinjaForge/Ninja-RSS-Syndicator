@@ -154,7 +154,8 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		if ($exitems != "") {
 			$where	.= "\n AND a.id NOT IN (" . $exitems . ")";
 		}
-				
+
+/*
 		if ($seclist!=="") {
 			if($seclist == "0")// Xipat - VH: Query uncategorised
 			{
@@ -168,7 +169,8 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		else {
 			$queryUncat= " OR a.sectionid = 0 ";
 		}
-		
+*/
+
 		if ($excatlist!=="") {
 		
 			if ($inclExclCatList){
@@ -179,11 +181,10 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		}
 		
 	    $nullDate    = $db->getNullDate();
-		$where	.= "\n AND (a.access = 1 OR a.access = 5)"	// item only public access check
-			.  "\n AND (c.access <= 0 $queryUncat) "	// category only public access check
-			//.  "\n AND (s.access <= 0 $queryUncat)"	// section only public access check
-			.  "\n" . 'AND (a.publish_up = '.$db->Quote($nullDate).' OR a.publish_up <= '.$db->Quote($now).')'
-			.  "\n" . 'AND ( a.publish_down = '.$db->Quote($nullDate).' OR a.publish_down >= '.$db->Quote($now).')'
+		$where	.=	"\n AND (a.access = 1 OR a.access = 5) "	// item only public access check
+				.	"\n AND (c.access = 1 OR c.access = 5) "	// category only public access check
+				.	"\n AND (a.publish_up = ".$db->Quote($nullDate)." OR a.publish_up <= ".$db->Quote($now).")"
+				.	"\n AND (a.publish_down = ".$db->Quote($nullDate)." OR a.publish_down >= ".$db->Quote($now).")"
 			;
 
         $query .= $where;
@@ -198,7 +199,7 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 		/* ORDER BY, LIMIT ...  construction */
 		$query	.= "\nORDER BY $orderby".  ($count ? (" LIMIT " . $count) : "");
 		
-       
+       //echo $query;
         //we first try with Joomla Tag
 		if (empty( $this->_content )) {	
 			$db->setQuery( $query );
