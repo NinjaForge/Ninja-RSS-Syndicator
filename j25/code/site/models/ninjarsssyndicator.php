@@ -106,10 +106,10 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModel
 				$orderby = "a.created DESC";
 				break;
 			case 'mdate':
-				$orderby = "a.modified";
+				$orderby = "GREATEST(a.created, a.modified)";
 				break;
 			case 'mrdate':
-				$orderby = "a.modified DESC";
+				$orderby = "GREATEST(a.created, a.modified) DESC";
 				break;
 			case 'catsect':
 				$orderby = intval($FPItemsOnly)==1 ? "f.ordering, a.ordering ASC, a.catid, a.sectionid" : "a.ordering ASC, a.catid, a.sectionid";
