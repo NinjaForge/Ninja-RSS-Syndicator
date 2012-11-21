@@ -1008,10 +1008,10 @@ class RSSCreator091 extends FeedCreator {
 				$feed.= "			<comments>".htmlspecialchars($this->items[$i]->comments)."</comments>\n";
 			}
 			if ($this->items[$i]->date!="") {
-			
+				if (strtotime($this->items[$i]->date) > strtotime($this->items[$i]->updated))
+					$this->items[$i]->updated = $this->items[$i]->date;
 				$itemDate = new FeedDate($this->items[$i]->date);
-				$itemUpdated = new FeedDate($this->items[$i]->updated);
-			
+				$itemUpdated = new FeedDate($this->items[$i]->updated);			
 				$feed.= "			<pubDate>".htmlspecialchars($itemUpdated->rfc822())."</pubDate>\n";
 			}
 			
