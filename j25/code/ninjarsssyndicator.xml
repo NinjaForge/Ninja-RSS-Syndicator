@@ -33,15 +33,17 @@
 		<folder>views</folder>
 		<!--<folder>language</folder>-->
 	</files>
-	
+	<languages folder="language">
+		<language tag="en-GB">en-GB.com_ninjarsssyndicator.ini</language>
+	</languages>
 	<administration>
 		<!-- Administration Menu Section -->
-		<menu img="../administrator/components/com_ninjarsssyndicator/assets/images/nficon.png" link="option=com_ninjarsssyndicator&amp;view=feeds" alias="Ninja RSS Syndicator">Ninja RSS Syndicator</menu>
+		<menu img="../administrator/components/com_ninjarsssyndicator/assets/images/nficon.png" link="option=com_ninjarsssyndicator&amp;view=feeds" alias="Ninja RSS Syndicator">COM_NINJARSSSYNDICATOR</menu>
 		<submenu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Dashboard" alias="Dashboard" view="info" link="option=com_ninjarsssyndicator&amp;view=info">Dashboard</menu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Feeds" alias="Feeds" view="feeds" link="option=com_ninjarsssyndicator&amp;view=feeds">Feeds</menu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Button Maker" alias="Button Maker" view="buttonmaker" link="option=com_ninjarsssyndicator&amp;view=buttonmaker">Button Maker</menu>
-			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Default Settings" alias="Default Settings" view="config" link="option=com_ninjarsssyndicator&amp;view=config">Default Settings</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Dashboard" alias="Dashboard" view="info" link="option=com_ninjarsssyndicator&amp;view=info">COM_NINJARSSSYNDICATOR_DASHBOARD</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Feeds" alias="Feeds" view="feeds" link="option=com_ninjarsssyndicator&amp;view=feeds">COM_NINJARSSSYNDICATOR_FEEDS</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Button Maker" alias="Button Maker" view="buttonmaker" link="option=com_ninjarsssyndicator&amp;view=buttonmaker">COM_NINJARSSSYNDICATOR_BUTTON_MAKER</menu>
+			<menu img="../administrator/templates/bluestork/images/menu/icon-16-component.png" alt="Default Settings" alias="Default Settings" view="config" link="option=com_ninjarsssyndicator&amp;view=config">COM_NINJARSSSYNDICATOR_DEFAULT_SETTINGS</menu>
 		</submenu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
@@ -68,6 +70,11 @@
 			<!-- helpers files section -->
 			<!--<folder>helpers</folder>-->
 		</files>
+		<!-- Admin Language Files Section -->
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_ninjarsssyndicator.ini</language>
+			<language tag="en-GB">language/en-GB.com_ninjarsssyndicator.sys.ini</language>
+		</languages>
 	</administration>
 </extension>
 
