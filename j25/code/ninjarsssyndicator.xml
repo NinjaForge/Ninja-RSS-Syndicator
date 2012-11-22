@@ -35,6 +35,7 @@
 	</files>
 	<languages folder="language">
 		<language tag="en-GB">en-GB.com_ninjarsssyndicator.ini</language>
+		<language tag="fr-FR">fr-FR.com_ninjarsssyndicator.ini</language>
 	</languages>
 	<administration>
 		<!-- Administration Menu Section -->
