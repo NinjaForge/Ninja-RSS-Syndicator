@@ -261,7 +261,8 @@ function delImagesFromHTML($html, $instances = -1) {
  */
 function word_limiter($string, $limit = 100) {
 	$words = array();
-	$string = eregi_replace(" +", " ", $string);
+	//$string = ereg_replace(" +", " ", $string);
+	$string = preg_replace("/ +/i", " ", $string);
 	$array = explode(" ", $string);
 	//$limit = (count($array) <= $numwords) ? count($array) : $numwords;
 	for($k=0;$k < $limit;$k++)
