@@ -26,7 +26,7 @@ class NinjaRssSyndicatorModelFeed extends JModel
 	var $_sections;
 	var $_exCategories=array();
 	var $_seccatlist;
-	var $_cnt=0;
+	var $_cnt=-1;
 	
 	function __construct()
 	{
@@ -206,17 +206,10 @@ class NinjaRssSyndicatorModelFeed extends JModel
 	
 	function getExCategories($parent=1,$menu_array)
 	{
-		if($this->_cnt==0)
+		if($this->_cnt==-1)
 		{
 			$this->_exCategories[] = JHTML::_('select.option', "",'No Selection');
-		}
-		
-		if(count($menu_array)==$this->_cnt)
-		{	
-			//echo $this->_cnt;
-			//return $this->_exCategories;
-			$session = JFactory::getSession();
-			$session->set('_exCategories', $this->_exCategories);
+			$this->_cnt=0;
 		}
 		
 		if(count($menu_array)>0)
@@ -233,11 +226,16 @@ class NinjaRssSyndicatorModelFeed extends JModel
 						$space.=' - ';
 					}
 								
-					$this->_exCategories[] = JHTML::_('select.option', $key,$space.$value['name']);	
+					$this->_exCategories[] = JHTML::_('select.option', $key,$space.$value['name']);
+					$session = JFactory::getSession();
+					$session->set('_exCategories', $this->_exCategories);
 					//$this->_exCategories[] = array($key,$space.$value['name']);	
-					$this->getExCategories($key,$menu_array,$this->_cnt);				
+					$this->getExCategories($key,$menu_array,$this->_cnt);
 				}			
-			}		
+			}
+			//fail-safe for when there is no system root category, set the starting parent-id to 0 instead of 1
+			if($this->_cnt==0 && $parent==1)
+				$this->getExCategories(0,$menu_array);
 		}
 	}
 	
@@ -272,20 +270,20 @@ class NinjaRssSyndicatorModelFeed extends JModel
 		$msg_excatlist  = implode(',', $a_msg_excatlist);
 
 		$feed_name = JRequest::getVar('feed_name', '', 'post', 'string');
-        $feed_name = $this->_db->Quote($this->_db->getEscaped($feed_name), false);
+		$feed_name = $this->_db->Quote($this->_db->getEscaped($feed_name), false);
 
 		$feed_description = JRequest::getVar('feed_description', '', 'post', 'string');
-        $feed_description = $this->_db->Quote($this->_db->getEscaped($feed_description), false);
+		$feed_description = $this->_db->Quote($this->_db->getEscaped($feed_description), false);
 
 		$feed_type = JRequest::getVar('feed_type', '', 'post', 'string');
 		$feed_cache = JRequest::getVar('feed_cache', '', 'post', 'string');
 
 		$feed_imgUrl = JRequest::getVar('feed_imgUrl', '', 'post', 'string');
-        $feed_imgUrl = $this->_db->Quote($this->_db->getEscaped($feed_imgUrl), false);
+		$feed_imgUrl = $this->_db->Quote($this->_db->getEscaped($feed_imgUrl), false);
 
 		$feed_button = JRequest::getVar('feed_button', '', 'post', 'string');
-        $feed_button = $this->_db->Quote($this->_db->getEscaped($feed_button), false);
-        
+		$feed_button = $this->_db->Quote($this->_db->getEscaped($feed_button), false);
+		
 		$feed_renderAuthorFormat = JRequest::getVar('feed_renderAuthorFormat', '', 'post', 'string');
 		$feed_renderHTML   = JRequest::getVar('feed_renderHTML', '0', 'post', 'int');
 		$feed_renderImages = JRequest::getVar('feed_renderImages', '0', 'post', 'int');
