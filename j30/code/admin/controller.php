@@ -47,7 +47,7 @@ class NinjaRssSyndicatorController extends JControllerLegacy
 	{
 		JSubMenuHelper::addEntry(JText::_('Dashboard'), 'index.php?option=com_ninjarsssyndicator&view=info', $vName == 'info');
 		JSubMenuHelper::addEntry(JText::_('Feeds'), 'index.php?option=com_ninjarsssyndicator', $vName == 'feeds');
-		JSubMenuHelper::addEntry(JText::_('Botton Maker'), 'index.php?option=com_ninjarsssyndicator&view=buttonmaker', $vName == 'buttonmaker');
+		JSubMenuHelper::addEntry(JText::_('Button Maker'), 'index.php?option=com_ninjarsssyndicator&view=buttonmaker', $vName == 'buttonmaker');
 		JSubMenuHelper::addEntry(JText::_('Default settings'), 'index.php?option=com_ninjarsssyndicator&view=config', $vName == 'config');
 	}
 }

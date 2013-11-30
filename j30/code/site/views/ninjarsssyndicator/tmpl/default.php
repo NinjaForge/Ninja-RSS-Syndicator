@@ -94,7 +94,7 @@ $itemids = $this->menuitemarray;
 foreach ($rows as $row) {
 	$item 		 = new FeedItem();
 	$item->title = htmlspecialchars($row->title);
-	$itemid		 = $itemids[$row->sectionid];		
+	$itemid		 = "";		
 
 	// be sure itemid has some content!
 	/*>>> AGE 20071012 */

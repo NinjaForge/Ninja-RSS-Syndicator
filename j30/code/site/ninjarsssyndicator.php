@@ -15,7 +15,9 @@ defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 require_once (JPATH_COMPONENT.DS.'controllers'.DS.'defaultcontroller.php');
 
 // Require specific controller if requested
-if($controller = JRequest::getWord('controller')) {
+// if($controller = JRequest::getWord('controller')) {
+$input = JFactory::getApplication()->input;
+if($controller = $input->get('controller')) {
 	require_once (JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php');
 }
 
@@ -25,8 +27,8 @@ $classname	= 'NinjaRssSyndicatorController'.$controller;
 $controller = new $classname( );
 
 // Perform the Request task
-$controller->execute( JRequest::getWord('task'));
-
+// $controller->execute( JRequest::getWord('task'));
+$controller->execute($input->get('task'));
 
 // Redirect if set by the controller
 $controller->redirect();

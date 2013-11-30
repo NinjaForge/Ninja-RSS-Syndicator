@@ -58,22 +58,34 @@ class NinjaRssSyndicatorViewConfig extends JViewLegacy
 		$lists['renderHTMLList'] =JHTML::_( 'select.genericList',$renderHTML, 'renderHTML', 'class="inputbox"','value', 'text',$configs->renderHTML );
 		
 		$FPItemsOnly[] = JHTML::_( 'select.option', '0','All items');
-	$FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
+		$FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
 		$FPItemsOnly[] = JHTML::_( 'select.option', '2','Non-frontpage items only');
 		$lists['FPItemsOnlyList'] =JHTML::_( 'select.genericList',$FPItemsOnly, 'FPItemsOnly', 'class="inputbox"','value', 'text',$configs->FPItemsOnly );
 		
-	$this->assignRef('id', $configs->id);
-		$this->assignRef('msg', $configs->msg);
-		$this->assignRef('defaultType', $lists['rssTypeList']);
-		$this->assignRef('count', $configs->count);
-		$this->assignRef('orderby', $lists['orderingList']);
-		$this->assignRef('numWords', $lists['numWordsList']);
-		$this->assignRef('renderAuthorFormat', $lists['renderAuthorList']);
-		$this->assignRef('renderHTML', $lists['renderHTMLList']);
-		$this->assignRef('FPItemsOnly', $lists['FPItemsOnlyList']);
-		$this->assignRef('cache', $configs->cache);
-		$this->assignRef('imgUrl', $configs->imgUrl);
-		$this->assignRef('description', $configs->description);
+		// $this->assignRef('id', $configs->id);
+		// $this->assignRef('msg', $configs->msg);
+		// $this->assignRef('defaultType', $lists['rssTypeList']);
+		// $this->assignRef('count', $configs->count);
+		// $this->assignRef('orderby', $lists['orderingList']);
+		// $this->assignRef('numWords', $lists['numWordsList']);
+		// $this->assignRef('renderAuthorFormat', $lists['renderAuthorList']);
+		// $this->assignRef('renderHTML', $lists['renderHTMLList']);
+		// $this->assignRef('FPItemsOnly', $lists['FPItemsOnlyList']);
+		// $this->assignRef('cache', $configs->cache);
+		// $this->assignRef('imgUrl', $configs->imgUrl);
+		// $this->assignRef('description', $configs->description);	
+		$this->id = $configs->id;
+		$this->msg = $configs->msg;
+		$this->defaultType = $lists['rssTypeList'];
+		$this->count = $configs->count;
+		$this->orderby = $lists['orderingList'];
+		$this->numWords = $lists['numWordsList'];
+		$this->renderAuthorFormat = $lists['renderAuthorList'];
+		$this->renderHTML = $lists['renderHTMLList'];
+		$this->FPItemsOnly = $lists['FPItemsOnlyList'];
+		$this->cache = $configs->cache;
+		$this->imgUrl = $configs->imgUrl;
+		$this->description = $configs->description;
 		parent::display($tpl);
 	}
 }

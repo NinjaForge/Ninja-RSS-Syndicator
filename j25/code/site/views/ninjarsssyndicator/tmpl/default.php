@@ -261,17 +261,17 @@ function delImagesFromHTML($html, $instances = -1) {
  */
 function word_limiter($string, $limit = 100) {
 	$words = array();
-	$string = eregi_replace(" +", " ", $string);
+	$string = preg_replace('/ +/i', ' ', $string);
 	$array = explode(" ", $string);
 	//$limit = (count($array) <= $numwords) ? count($array) : $numwords;
 	for($k=0;$k < $limit;$k++)
 	{
 		if(($limit>0 && $limit == $k)||!isset($array[$k]))
 			break;
-		if (eregi("[0-9A-Za-zÀ-ÖØ-öø-ÿ]", $array[$k]))
+		if (preg_match('/0-9A-Za-zÀ-ÖØ-öø-ÿ/i', $array[$k]))
 			$words[$k] = $array[$k];
 	}
-	$txt = implode(" ", $words);
+	$txt = implode(' ', $words);
 	return $txt;
 }
 

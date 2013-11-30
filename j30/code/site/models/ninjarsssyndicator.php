@@ -27,7 +27,10 @@ class NinjaRssSyndicatorModelninjarsssyndicator extends JModelLegacy
 
 		global $option;
 		
-		$id = JRequest::getInt('feed_id',	0, '', 'int');
+		// $id = JRequest::getInt('feed_id',	0, '', 'int');
+		$input = JFactory::getApplication()->input;
+		$id = $input->get('feed_id','0','INT');
+
 		$this->setId((int)$id);
 	}
 	

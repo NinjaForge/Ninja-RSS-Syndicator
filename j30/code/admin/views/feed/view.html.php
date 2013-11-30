@@ -56,7 +56,7 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$lists['numWordsList'] = JHTML::_('select.genericList', $numWords, 'msg_numWords', 'class="inputbox"','value', 'text', $isNew ? $default->numWords : $feed->msg_numWords, 'msg_numWords' );
 		
 		$FPItemsOnly[] = JHTML::_( 'select.option', '0','All items');
-	$FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
+		$FPItemsOnly[] = JHTML::_( 'select.option', '1','Front page items only');
 		$FPItemsOnly[] = JHTML::_( 'select.option', '2','Non-frontpage items only');
 		$lists['FPItemsOnlyList'] =JHTML::_( 'select.genericList',$FPItemsOnly, 'msg_FPItemsOnly', 'class="inputbox"','value', 'text',$isNew ? $default->FPItemsOnly : $feed->msg_FPItemsOnly, 'msg_FPItemsOnly' );
 		
@@ -140,19 +140,32 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$feed->msg_count = $isNew ? $default->count:$feed->msg_count;
 		$feed->feed_cache = $isNew ? $default->cache:$feed->feed_cache;
 		$feed->feed_description = $isNew ? $default->description : $feed->feed_description;
+
 		
-		$this->assignRef('id', $feed->id);
-		$this->assignRef('name', $feed->feed_name);
-		$this->assignRef('count', $feed->msg_count);
-		$this->assignRef('cache', $feed->feed_cache);
-		$this->assignRef('imgUrl', $feed->feed_imgUrl);
-		$isNew? $feed->feed_button='rss20.gif':$feed->feed_button;
-		$this->assignRef('BtnImgUrl', $feed->feed_button);
-		$this->assignRef('exitems', $feed->msg_exitems);
-		$this->assignRef('includetags', $feed->msg_includetags);
-		$this->assignRef('description', $feed->feed_description);
-		$this->assignRef('editor', $editor);
-		$this->assignRef('lists', $lists);
+		// $this->assignRef('id', $feed->id);
+		// $this->assignRef('name', $feed->feed_name);
+		// $this->assignRef('count', $feed->msg_count);
+		// $this->assignRef('cache', $feed->feed_cache);
+		// $this->assignRef('imgUrl', $feed->feed_imgUrl);
+		$this->id = $feed->id;
+		$this->name = $feed->feed_name;
+		$this->count = $feed->msg_count;
+		$this->cache = $feed->feed_cache;
+		$this->imgUrl = $feed->feed_imgUrl;
+		$isNew? $feed->feed_button='rss20.gif': $feed->feed_button;
+		// $this->assignRef('BtnImgUrl', $feed->feed_button);
+		// $this->assignRef('exitems', $feed->msg_exitems);
+		// $this->assignRef('includetags', $feed->msg_includetags);
+		// $this->assignRef('description', $feed->feed_description);
+		// $this->assignRef('editor', $editor);
+		// $this->assignRef('lists', $lists); 
+		$this->BtnImgUrl = $feed->feed_button;
+		$this->exitems = $feed->msg_exitems;
+		$this->includetags = $feed->msg_includetags;
+		$this->description = $feed->feed_description;
+		$this->editor = $editor;
+		$this->lists = $lists; 
+    
 		
 		$this->addToolbar($isNew);
 		parent::display($tpl);
@@ -161,7 +174,8 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 	protected function addToolbar($isNew)
 	{
 		JFactory::getApplication()->input->set('hidemainmenu', true);
-		$text = $isNew ? 'New feed':'Change feed: '. $feed->feed_name;
+		$feed = $this->get('SData');
+    	$text = $isNew ? 'New feed':'Change feed: '. $feed->feed_name;
 		
 		JToolBarHelper::title(JText::_( 'Ninja RSS Syndicator').': <small><small>[ ' . $text.' ]</small></small>', 'article-add.png' );
 		JToolBarHelper::apply('feed.apply');

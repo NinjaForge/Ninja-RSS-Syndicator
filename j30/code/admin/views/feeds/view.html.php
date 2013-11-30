@@ -27,8 +27,10 @@ class NinjaRssSyndicatorViewFeeds extends JViewLegacy
 		$this->pagination	= $this->get('Pagination');
 		$this->state		= $this->get('State');
 		
-		$this->assignRef('items',		$this->items);
-		$this->assignRef('pagination',	$this->pagination);
+		// $this->assignRef('items',		$this->items);
+		// $this->assignRef('pagination',	$this->pagination);
+		$this->items = $this->items;
+		$this->pagination =	$this->pagination;
 		
 		$this->addToolbar();
 		parent::display($tpl);
