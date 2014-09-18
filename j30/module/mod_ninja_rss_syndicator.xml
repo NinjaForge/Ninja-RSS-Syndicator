@@ -42,8 +42,8 @@
                 </field>
 				
 				<field name="link_to_feed_icon" type="radio" default="1" label="Link to feed icon?" description="Add the RSS feed icon to the header when module published. This will add a feed icon to the URL bar of your browser.">
-					<option value="1">No</option>
-					<option value="0">Yes</option>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
 				</field>
                 
 				<field name="link_target" type="radio" default="_self" label="Open feed in new window/tab?" description="When the feed link or icon is clicked, would you like it to open in a new window/tab?">
