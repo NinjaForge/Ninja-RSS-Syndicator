@@ -48,7 +48,6 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JViewLegacy
 		$this->sectlist = $feed->msg_sectlist;
 		$this->excatlist = $feed->msg_excatlist; 
 		$this->fulltext = $feed->msg_fulltext;	
-		$this->cat = $feed->msg_sectcat;
 		$this->count = $feed->msg_count;
 		$this->orderby = $feed->msg_orderby;
 		$this->cache = $feed->feed_cache;
