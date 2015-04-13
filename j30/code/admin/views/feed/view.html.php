@@ -140,7 +140,10 @@ class NinjaRssSyndicatorViewFeed extends JViewLegacy
 		$feed->msg_count = $isNew ? $default->count:$feed->msg_count;
 		$feed->feed_cache = $isNew ? $default->cache:$feed->feed_cache;
 		$feed->feed_description = $isNew ? $default->description : $feed->feed_description;
-
+                $feed->feed_imgUrl = $isNew ? $default->imgUrl : $feed->feed_imgUrl;
+                $feed->feed_name = $isNew ? '' : $feed->feed_name;
+                $feed->msg_exitems = $isNew ? '' : $feed->msg_exitems;
+                $feed->msg_includetags = $isNew ? '' : $feed->msg_includetags;
 		
 		// $this->assignRef('id', $feed->id);
 		// $this->assignRef('name', $feed->feed_name);
