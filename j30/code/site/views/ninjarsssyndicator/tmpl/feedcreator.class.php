@@ -1012,7 +1012,7 @@ class RSSCreator091 extends FeedCreator {
 					$this->items[$i]->updated = $this->items[$i]->date;
 				$itemDate = new FeedDate($this->items[$i]->date);
 				$itemUpdated = new FeedDate($this->items[$i]->updated);			
-				$feed.= "			<pubDate>".htmlspecialchars($itemUpdated->rfc822())."</pubDate>\n";
+				$feed.= "			<pubDate>".htmlspecialchars($itemDate->rfc822())."</pubDate>\n";
 			}
 			
 			
