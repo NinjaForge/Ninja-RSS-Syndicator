@@ -10,7 +10,7 @@
 */
 // no direct access
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
-$doc =& JFactory::getDocument(); 
+$doc = JFactory::getDocument(); 
 ?>
 <?php if (file_exists(JPATH_SITE.'/components/com_ninjarsssyndicator/ninjarsssyndicator.php')){?>
 <?php if(count($items)){?>
@@ -29,7 +29,7 @@ $doc =& JFactory::getDocument();
 			<?php //we create the head link if it does not exist
 			if($link_to_feed_icon){
 				$feedLinkExist = false;
-				foreach($doc->_links as $link)
+				foreach($doc->_links as $link=>$array)
 				{
 					preg_match("\"".preg_quote($item->feed_link)."\"", $link, $matches);
 					if($matches){
