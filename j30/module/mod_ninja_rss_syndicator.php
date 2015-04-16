@@ -12,14 +12,14 @@
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 // Include the syndicate functions only once
 
-require_once (dirname(__FILE__).DS.'helper.php');
+require_once (dirname(FILE).'/helper.php');
 $cssClass 	= $params->get('moduleclass_sfx');
 $message 	= $params->get('msg','');
 $align 		= $params->get('align','left');
 $link_to_feed_icon		= (int) $params->get('link_to_feed_icon','1');
 $link_target 			= $params->get('link_target','_self');
 $show_feed_name_text 	= (int) $params->get('show_feed_name_text','1');
-$items 					= modNinjaRssSyndicatorHelper::getNinjaRssSyndicatorFeeds($params);
+$items 					= (new modNinjaRssSyndicatorHelper)->getNinjaRssSyndicatorFeeds($params);
 
 require(JModuleHelper::getLayoutPath('mod_ninja_rss_syndicator', 'default' ));
 ?>
