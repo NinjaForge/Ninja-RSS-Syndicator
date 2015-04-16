@@ -14,7 +14,7 @@ class modNinjaRssSyndicatorHelper
 	function getNinjaRssSyndicatorFeeds($params)
 	{
         //connect to database
-        $db = &JFactory::getDBO();
+        $db = JFactory::getDBO();
         //load module parameters & set defaults
 		$only_feeds 		= $params->get('feedid','');
 		$link_to_feed_icon 	= (int) $params->get('link_to_feed_icon','1');
@@ -39,7 +39,7 @@ class modNinjaRssSyndicatorHelper
         $items = array();
         foreach ($rows as $row)
         {
-            $item = '';
+            $item = new stdClass();
 			//set feed name
 			$item->feed_name = $row->feed_name;
 			//set feed link
@@ -47,7 +47,7 @@ class modNinjaRssSyndicatorHelper
 			//set button image
 			$item->feed_button = ($row->feed_button) ? $row->feed_button : "default.gif";;
 			//Check if there is a picture present
-			if (file_exists(JPATH_BASE.DS."components".DS."com_ninjarsssyndicator".DS."assets".DS."images".DS."buttons".DS.$item->feed_button)) 
+			if (file_exists(JPATH_BASE."/components/com_ninjarsssyndicator/assets/images/buttons/".$item->feed_button))
 			{			
 				//the picture exist so display it
 				$item->feed_img_link =  '<a href="'.$item->feed_link.'" title="'.$item->feed_name.'" target="'.$link_target.'"><img src="'.JURI::base() . 'components/com_ninjarsssyndicator/assets/images/buttons/'.$item->feed_button.'" alt="'.$item->feed_name.'" /></a>';			
