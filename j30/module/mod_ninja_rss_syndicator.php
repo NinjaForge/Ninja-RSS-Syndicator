@@ -12,7 +12,7 @@
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 // Include the syndicate functions only once
 
-require_once (dirname(FILE).'/helper.php');
+require_once (dirname(__FILE__).'/helper.php');
 $cssClass 	= $params->get('moduleclass_sfx');
 $message 	= $params->get('msg','');
 $align 		= $params->get('align','left');
