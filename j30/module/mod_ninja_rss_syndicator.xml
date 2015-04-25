@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" method="upgrade">
+  <name>Ninja RSS Syndicator</name>
+  <creationDate>April 2012</creationDate>
+  <author>Ninjaforge</author>
+  <copyright>Ninja Forge</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <authorEmail>support@ninjaforge.com</authorEmail>
+  <authorUrl>http://ninjaforge.com/</authorUrl>
+  <version>2.0.3</version>
+  <description>Use this module to display your feed buttons</description>
+  <files>
+    <filename module="mod_ninja_rss_syndicator">mod_ninja_rss_syndicator.php</filename>
+    <filename>helper.php</filename>
+    <filename>index.html</filename>    
+    <folder>tmpl</folder>
+  </files>
+  
+  <config>
+  		<fields name="params">
+			<fieldset name="basic">
+				
+				<field name="moduleclass_sfx" type="text" value="" label="Module class suffix" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />		
+				
+				<field name="msg" type="text" size="40" default="" label="Message" description="Enter the header message for the module here." />
+				
+				
+				<field
+                    name="feedid"
+                    type="sql"
+                    query="SELECT id, feed_name AS title FROM #__ninjarsssyndicator_feeds WHERE published = 1 ORDER BY feed_name"
+                    key_field="id" value_field="title"
+                    multiple="multiple"
+                    label="Feeds"
+                    description="Select which feeds you would like to show in the module, for all feeds select none.">
+                </field>
+				
+				<field name="align" type="list" default="left" label="Align" description="Alignment of the module.">
+                	<option value="center">Center</option>
+    				<option value="left">Left</option>
+				    <option value="right">Right</option>
+                </field>
+				
+				<field name="link_to_feed_icon" type="radio" default="1" label="Link to feed icon?" description="Add the RSS feed icon to the header when module published. This will add a feed icon to the URL bar of your browser.">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+                
+				<field name="link_target" type="radio" default="_self" label="Open feed in new window/tab?" description="When the feed link or icon is clicked, would you like it to open in a new window/tab?">
+				 	<option value="_blank">Yes</option>
+      				<option value="_self">No (Recommended)</option>
+				</field>
+				
+				<field name="show_feed_name_text" type="radio" default="1" label="Show feed name text?" description="As well as the feed icon, show the name as text next to the icon.">
+				   <option value="1">Yes</option>
+    				<option value="0">No</option>
+				</field>
+				
+			</fieldset>
+			
+			
+		</fields>
+  </config>
+ 
+</extension>
