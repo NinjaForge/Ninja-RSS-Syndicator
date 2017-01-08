@@ -1,12 +1,12 @@
 <?php 
 /*
-* @version		2.0
+* @version		2.1
 * @package		com_ninjarsssydicator
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
 * @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
-* @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
+* @copyright	Copyright (C) 2017 NinjaForge - All rights reserved.
 */
 
 defined('_JEXEC') or die('Restricted access'); 
@@ -162,7 +162,7 @@ foreach ($rows as $row) {
 	
 	if ($this->fulltext == 1 or $AddReadMoreLink) {
 		if (strlen(trim($row->mtext)) > 0 or $AddReadMoreLink)
-			$words .= "\n<p><a href=\"" . $item->link . "\">" . JText::sprintf('Read more...') . "</a></p>"; 				
+			$words .= "\n<p><a href=\"" . $item->link . "\">" . JText::_('COM_NINJARSSSYNDICATOR_READ_MORE') . "</a></p>";
 	}
 			
 	if (!intval($this->renderHTML)) {

@@ -1,12 +1,13 @@
 <?php
-/*
-* @version		2.0
+
+/**
+* @version		2.1
 * @package		com_ninjarsssydicator
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
-* @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
+* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @copyright	Copyright (C) 2017 NinjaForge - All rights reserved.
 */
 
 // No direct access to this file
@@ -62,9 +63,13 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JViewLegacy
 		$this->contentPlugins = $feed->msg_contentPlugins;
 		$this->content = $content;
 		$this->menuitemarray = $menuItemArray;
+
 		//TODO - add these columns if enough people request them
 		//$this->assignRef('ninjaRSSFeedRowPlugins', $feed->msg_ninjaRSSFeedRowPlugins);		
 		//$this->assignRef('ninjaRSSFeedPlugins', $feed->feed_ninjaRSSFeedPlugins);
+		
+		$this->assignRef('content', $content);
+		$this->assignRef('menuitemarray',$menuItemArray );
 		
 		parent::display($tpl);
 	}

@@ -1,12 +1,12 @@
 <?php
-/*
-* @version		2.0
+/**
+* @version		2.1
 * @package		com_ninjarsssydicator
 * @author 		NinjaForge
 * @author email	support@ninjaforge.com
 * @link			http://ninjaforge.com
-* @license		http://www.gnu.org/copyleft/gpl.html GNU GPL
-* @copyright	Copyright (C) 2012 NinjaForge - All rights reserved.
+* @license      http://www.gnu.org/copyleft/gpl.html GNU GPL
+* @copyright	Copyright (C) 2017 NinjaForge - All rights reserved.
 */
 
 // No direct access to this file
@@ -18,8 +18,8 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JViewLegacy
 {
 	function display($tpl = null)
 	{
-		$feed		= $this->get( 'Data');	
-		//$feed		= $this->get( 'Items');	
+		$feed		= $this->get( 'Data');
+		//$feed		= $this->get( 'Items');
 		$content	= $this->get( 'Content');
 		$menuItemArray = $this->get('MenuItemArray');
 		// $this->assignRef('id', $feed->id);
@@ -48,7 +48,7 @@ class NinjaRssSyndicatorViewNinjaRssSyndicator extends JViewLegacy
 		$this->sectlist = $feed->msg_sectlist;
 		$this->excatlist = $feed->msg_excatlist; 
 		$this->fulltext = $feed->msg_fulltext;	
-		$this->cat = $feed->msg_sectcat;
+		// $this->cat = $feed->msg_sectcat;
 		$this->count = $feed->msg_count;
 		$this->orderby = $feed->msg_orderby;
 		$this->cache = $feed->feed_cache;
